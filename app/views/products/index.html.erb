@@ -1,0 +1,51 @@
+<link type="text/css" rel="stylesheet" src="/stylesheet/index.css">
+<div class="product_list">
+	<h1>Product Management</h1>
+	
+	<table>
+		<tr class="list_line_even">
+			<th>Preview Product</th>
+			<th>Product Details</th>
+			<th>Related Products</th>
+			<th>Available Actions</th>
+		</tr>
+	<% @products.each do |product| %>
+	  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	  	<td><%= image_tag(Image.find_by_product_id(product.id).url, :class => 'list_image') %></td>
+	    <td class='list_description'>
+	    	<dl>
+	    		<dt><%= product.title %></dt>
+	    		<dd><%= truncate(strip_tags(product.description), :length => 300) %></dd>
+		</td>
+		<td>
+			<% if !product.related_products.empty? %>
+			<table>
+				<tr>
+					<th>Title</th>
+					<th>Thumbnail</th>
+				</tr>
+			<% product.related_products.each do |related| %>
+				<tr>
+					<td class="relName"><%= related.name %></td>
+					<td class="thumbnail"><%= image_tag(Image.find_by_product_id(related.id).url)%></td>
+				</tr>		
+			<% end %>
+			</table>
+			<% else %>
+				<h4>This product has no related products</h4>
+			<% end %>
+		</td>
+	
+	    <td class="list_actions">
+	    	<%= link_to 'View Product', product %><br />
+	    	<%= link_to 'Add Related Product', new_related_product_path+"?id=#{product.id}" %><br />
+	    	<%= link_to 'Edit Product', edit_product_path(product) %><br />
+	    	<%= link_to 'Remove Product', product, confirm: 'Are you sure you want to delete #{product.title} from the store?', method: :delete %>
+		</td>
+	  </tr>
+	<% end %>
+	</table>
+</div>
+<br />
+
+<%= link_to 'New Product', new_product_path %>

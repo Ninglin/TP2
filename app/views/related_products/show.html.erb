@@ -1,0 +1,21 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<p>
+  <b>Name:</b>
+  <%= @related_product.name %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= image_tag(@related_product.image_url) %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @related_product.product_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_related_product_path(@related_product) %> |
+<%= link_to 'Back', related_products_path %>

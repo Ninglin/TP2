@@ -1,0 +1,27 @@
+<h1>Listing Related Products</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image url</th>
+    <th>Product</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @related_products.each do |related_product| %>
+  <tr>
+    <td><%= related_product.name %></td>
+    <td><%= image_tag(related_product.image_url) %></td>
+    <td><%= related_product.product_id %></td>
+    <td><%= link_to 'Show', related_product %></td>
+    <td><%= link_to 'Edit', edit_related_product_path(related_product) %></td>
+    <td><%= link_to 'Destroy', related_product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Related product', new_related_product_path %>

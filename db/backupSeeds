@@ -1,0 +1,119 @@
+Category.delete_all
+Category.create(:name	=> "Books")
+Category.create(:name	=> "Kindle Store")
+Category.create(:name	=> "Electronics")
+Category.create(:name	=> "Computers & Acessories")
+Category.create(:name	=> "Software")
+Category.create(:name	=> "Office Products")
+
+Product.delete_all
+Product.create(:title => "Code", 
+	:description => 
+	%{<p>Crossing over into general-interest non-fiction from his popular programming
+      manuals, Charles Petzold has written Code: The Hidden Language of Computer Hardware and
+      Software. It's a carefully written, carefully researched gem that will appeal to anyone who
+      wants to understand computer technology at its most essential levels. Readers learn about
+      number systems(decimal, octal, binary and all that) through Petzold's patient (and frequently
+      entertaining) prose, then discover the logical systems that are used to process them. There's
+      loads of historical information, too. From Louis Braille's development of his eponymous
+      raised-dot code to Intel Corporation's release of its early microprocessors, Petzold presents
+      the stories of people trying to find ways to communicate with (and by means of) mechanical and
+      electrical devices. It's a fascinating progression of technologies and the author presents a
+      clear statement of how they fit together. The real value of Code is in its explanations of
+      technologies that have been obscured for years behind fancy user interfaces and programming
+      environments that, in the name of rapid application development, insulate the programmer from
+      the machine. In a section on machine language, Petzold dissects the instruction sets of the
+      genre-defining Intel 8080 and Motorola6800 processors. He walks the reader through the process
+      of performing various operations with each chip, explaining which op codes poke which values
+      into which registers along the way. Petzold knows that the hidden language of computers
+      exhibits real beauty. In Code, he helps his readers appreciate it. --David Wall Topics
+      covered: Mechanical and electrical representations of words and numbers, number systems, logic
+      gates, performing mathematical operations with logic gates, microprocessors, machine code,
+      memory and programming languages. --This text refers to an out of print or unavailable edition
+      of this title.</p>},
+      :image_url =>  'http://ecx.images-amazon.com/images/I/31GBgcA5PML._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_AA240_SH20_OU02_.jpg',
+      :price => 7.15,
+      :category_id => Category.find_by_name("Books").id)
+Product.create(:title => 'The Mythical Man Month and Other Essays on Software Engineering', 
+	:description => 
+	%{<p>Few books on software project management have been as influential and timeless as
+      The Mythical Man-Month . With a blend of software engineering facts and thought-provoking
+      opinions, Fred Brooks offers insight for anyone managing complex projects. These essays draw
+      from his experience as project manager for the IBM System/360 computer family and then for
+      OS/360, its massive software system. Now, 20 years after the initial publication of his book,
+      Brooks has revisited his original ideas and added new thoughts and advice, both for readers
+      already familiar with his work and for readers discovering it for the first time. The added
+      chapters contain (1) a crisp condensation of all the propositions asserted in the original
+      book, including Brooks' central argument in The Mythical Man-Month: that large programming
+      projects suffer management problems different from small ones due to the division of labor;
+      that the conceptual integrity of the product is therefore critical; and that it is difficult
+      but possible to achieve this unity; (2) Brooks' view of these propositions a generation later;
+      (3) a reprint of his classic 1986 paper "No Silver Bullet"; and (4) today's thoughts on the
+      1986 assertion, "There will be no silver bullet within ten years.</p>},
+      :image_url =>  'http://ecx.images-amazon.com/images/I/51WIpM70FEL._SL500_AA240_.jpg',
+      :price => 17.00,
+      :category_id => Category.find_by_name("Books").id)
+Product.create(:title => 'Programming in Haskell', 
+	:description => 
+	%{<p>The best introduction to Haskell available. There are many paths towards becoming
+      comfortable and competent with the language but I think studying this book is the quickest
+      path. I urge readers of this magazine to recommend Programming in Haskell to anyone who has
+      been thinking about learning the language.' Duncan Coutts, Monad Reader 'Two groups of people
+      must consider this book. The first is professors interested in rapidly introducing students to
+      fundamental concepts in functional programming. This book, supplemented with online resources
+      and professorial guidance could easily serve as the textbook for a semester-long course on
+      functional programming. The second group is programmers interested in surveying the functional
+      paradigm as quickly as possible.' Journal of Functional Programming</p>},
+      :image_url =>  'http://ecx.images-amazon.com/images/I/41rwtENNgBL._BO2,204,203,200_PIsitb-sticker-arrow-click,TopRight,35,-76_AA240_SH20_OU02_.jpg',
+	  :price => 20.25,
+      :category_id => Category.find_by_name("Books").id)
+Product.create(:title => 'JavaScript', 
+	:description => 
+	%{<p>Unearthing the Excellence in JavaScript</p>},
+      :image_url =>  'http://ecx.images-amazon.com/images/I/511j6cza5bL._SL500_AA258_PIkin4,BottomRight,-30,22_AA280_SH20_OU02_.jpg',
+	  :price => 12.01,
+      :category_id => Category.find_by_name("Kindle Store").id)
+Product.create(:title => 'Python Essential Reference (4th Edition) eBook', 
+	:description => 
+	%{<p>This is the eBook version of the printed book. Python Essential Reference is the
+      definitive reference guide to the Python programming language &amp;#x2014; the one
+      authoritative handbook that reliably untangles and explains both the core Python language and
+      the most essential parts of the Python library. Designed for the professional programmer, the
+      book is concise, to the point, and highly accessible. It also includes detailed information on
+      the Python library and many advanced subjects that is not available in either the official
+      Python documentation or any other single reference source. &amp;#xa0; Thoroughly updated to
+      reflect the significant new programming language features and library modules that have been
+      introduced in Python 2.6 and Python 3, the fourth edition of Python Essential Reference is the
+      definitive guide for programmers who need to modernize existing Python code or who are
+      planning an eventual migration to Python 3. Programmers starting a new Python project will
+      find detailed coverage of contemporary Python programming idioms. &amp;#xa0; This fourth
+      edition of Python Essential Reference features numerous improvements, additions, and updates:
+      Coverage of new language features, libraries, and modules Practical coverage of Python's more
+      advanced features including generators, coroutines, closures, metaclasses, and decorators
+      Expanded coverage of library modules related to concurrent programming including threads,
+      subprocesses, and the new multiprocessing module Up-to-the-minute coverage of how to use
+      Python 2.6&amp;#x2019;s forward compatibility mode to evaluate code for Python 3 compatibility
+      Improved organization for even faster answers and better usability Updates to reflect modern
+      Python programming style and idioms Updated and improved example code Deep coverage of
+      low-level system and networking library modules &amp;#x2014; including options not covered in
+      the standard documentation &amp;#xa0;</p>},
+      :image_url =>  'http://ecx.images-amazon.com/images/I/41wFtSK7t2L._SL500_AA258_PIkin4,BottomRight,-43,22_AA280_SH20_OU02_.jpg',
+	  :price => 16.50,
+      :category_id => Category.find_by_name("Kindle Store").id)
+      
+RelatedProduct.delete_all
+RelatedProduct.create(:name => "Computer Science Illuminated",
+                      :image_url => "http://ecx.images-amazon.com/images/I/51W-YaXNAVL._SL500_SS100_.jpg",
+                      :product_id => Product.find_by_title("Code").id )
+RelatedProduct.create(:name => "The Annotated Turing: A Guided Tour Through Al...",
+                      :image_url => "http://ecx.images-amazon.com/images/I/51OId3bQb5L._SL500_PIsitb-sticker-arrow-big,TopRight,35,-73_OU02_SS100_.jpg",
+                      :product_id => Product.find_by_title("Code").id )  
+RelatedProduct.create(:name => "The Pragmatic Programmer",
+                      :image_url => "http://ecx.images-amazon.com/images/I/41HXiIojloL._SL500_SS100_.jpg",
+                      :product_id => Product.find_by_title("The Mythical Man Month and Other Essays on Software Engineering").id )    
+RelatedProduct.create(:name => "Peopleware: Productive Projects &amp; Tea...",
+                      :image_url => "http://ecx.images-amazon.com/images/I/51MlUgcSICL._SL500_SS100_.jpg",
+                      :product_id => Product.find_by_title("The Mythical Man Month and Other Essays on Software Engineering").id )                                                        
+RelatedProduct.create(:name => "Pro JavaScript Techniques",
+                      :image_url => "http://ecx.images-amazon.com/images/I/51elSm%2B7ZVL._SL500_SS100_.jpg",
+                      :product_id => Product.find_by_title("JavaScript").id )

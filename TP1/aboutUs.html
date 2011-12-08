@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<title> FooBar Online Store </title>
+	<link rel="stylesheet" type="text/css" href="CSS\aboutUs.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="CSS\aboutUsPrint.css" media="print"/>
+	<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js" type="text/javascript"></script>
+	<script src="JS/jquery.cookie.js" type="text/javascript"></script>
+	<script src="JS/aboutUs.js" type="text/javascript"></script>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+	<body>
+		<div id="wrap">
+				<div id="header">
+					<div id="logo">
+						<a href="index.html"></a>
+					</div>
+					<div id="loginContainer">
+						<form action="index.html">
+							<input class="userName" name="user" type="text" value="User Name..."/><br>
+							<input class="userPass" name="pass" type="text" value="Password..."/>
+							<input class="logInButton" type="submit" value=""/>
+						</form>	
+					</div>
+					<div id="searchBar">
+						<form action="categorie.html">
+							<div>
+								<input id="search" type="text" value="Search keywords..."/><br>
+								<input class ="searchButton" type="submit" value=""/>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+				<div id="navContainer">
+					<ul id="navlist">
+						<li class="menu"><p> Menu </p></li>
+						<li>
+							<a href="index.html">Home</a>
+						</li>
+						<li class="popupmenu">
+							<a href="categorie.html">Categories</a>
+							<ul id="submenu">
+								<li class="init"></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div id="contentContainer">
+						<table>
+							<tr id="imageRow">
+								<td><img src="Images/hugo.jpg" alt="FOTO HUGO"/></td>
+								<td><img src="Images/paulo.jpg" alt="FOTO PAULO"/></td>								
+							</tr>
+							<tr>
+								<td class="secondRow">
+									<p>Hugo Tavares </p>
+									<p>N&#176; 23305 </p>
+									<p>fuffles_9@netcabo.pt</p>
+								</td>
+								<td class="secondRow">
+									<p>Paulo Granja </p>
+									<p>N&#176; 31952 </p>
+									<p>pj_91@msn.com</p>
+								</td>
+							</tr>
+							<tr>
+								<td class="download">
+									Download do relat&oacute;rio: <a href="relatorio.pdf">relat&oacute;rio.pdf</a>
+								</td>
+								<td class="download"></td>
+							</tr>
+						</table>
+				</div>
+				
+				<div id="footer">
+					<p><a href="aboutUs.html">About Us</a> - &copy; Hugo Tavares, n&ordm; 23305 &amp; Paulo Granja, n&ordm; 31952</p>
+					<a href="http://validator.w3.org/check/referer">
+					<img src="http://www.w3.org/Icons/valid-xhtml11" alt="valid-xhtml11"/></a>
+					<a href="http://jigsaw.w3.org/css-validator/check/referer">
+					<img src=" http://jigsaw.w3.org/css-validator/images/vcss" alt="vcss"/></a>
+					
+					<div id="pagStyle">
+						<p>Themes: </p> 
+							<select id="styleSelect">
+								<option value="1">Orange</option>
+								<option value="2">Bordeaux</option>
+							</select>
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

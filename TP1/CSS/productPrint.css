@@ -1,0 +1,241 @@
+body
+{
+	background-color: #ffffff;
+}
+
+#wrap
+{
+	background-color: #ffffff;
+	margin: 0em 12em 0em 0em;
+	padding: 0px 0px 0px 0px;
+	width: 61em;
+}
+
+#header
+{
+	border-radius: 1em 1em 4em 4em;
+	background-color: #ffffff;
+	margin-bottom: 0.5em;
+	border: 1px solid #000000;
+	height: 6em;
+	width: 61em;
+	margin-bottom:0.5em;
+}
+
+#logo a
+{
+	background-image: url("../Images/headerImgPrint.png");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	width: 454px;
+	height: 100px;
+	float:left;
+}
+
+#header .searchButton
+{
+	display: none;
+}
+
+#header .searchButtonPressed
+{
+	display: none;
+}
+
+#header #searchBar
+{
+	display: none;
+}
+
+#header #searchBar #search
+{
+	display: none;
+}
+
+#mainContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #FFFFFF;
+	width: 10em;
+	border: 1px solid #000000;
+	margin-top: 0.5em;
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+	float: left;
+}
+
+#mainContainer p
+{
+	font-family:"Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size: 14pt;
+	font-weight: bold;
+	padding-left: 3px;
+}
+
+#mainContainer #imageContainer img
+{
+	width: 150px;
+	height: 200px;
+	text-align: center;
+}
+
+#imageListContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #FFFFFF;
+	width: 82%;
+	height: 100%;
+	border: 1px solid #000000;
+	float: right;
+	margin-top:0.5em;
+	text-align:center;
+}
+
+#imageList p
+{
+	font-family:"Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-weight: bold;
+	padding-left: 3px;
+}
+
+#reviewsContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #FFFFFF;
+	width: 82%;
+	height: 100%;
+	border: 1px solid #000000;
+	float: right;
+	margin-top:0.5em;
+}
+
+#reviewsContainer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-weight: bold;
+	padding-left: 3px;
+}
+
+#commentListContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #FFFFFF;
+	width: 82%;
+	height: 100%;
+	border: 1px solid #000000;
+	float: right;
+	margin-top:0.5em;
+	margin-bottom: 0.5em;
+}
+
+#commentListContainer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-weight: bold;
+	padding-left: 3px;
+}
+
+#mainContainer #relatedContainer #relatedText
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color: #000000;
+	font-size: 14pt;
+	font-weight: normal;
+	text-align: left;
+	margin-bottom: 0px;
+	border-top: none;
+	padding-left: 3px;
+}
+
+#mainContainer #relatedContainer p
+{
+	border-top: 3px solid #000000;
+	margin-bottom: 10%;
+	text-align: center;
+	font-size: 10px;
+}
+
+#mainContainer #relatedContainer img
+{
+	margin-top: 0%;
+	margin-bottom: 10%;
+	margin-left: 20%;
+	margin-right: 20%;
+	width: 60%;
+}
+
+#descriptionContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #FFFFFF;
+	width: 82%;
+	height: 100%;
+	border: 1px solid #000000;
+	float: right;
+	margin-top:0.5em;
+}
+
+#descriptionContainer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	padding-left: 3px;
+}
+
+#descriptionContainer .title{
+	font-weight: bold;
+	padding-left: 3px;
+}
+
+#navContainer
+{
+	display: none;
+}
+
+#navContainer a
+{
+	display: none;
+}
+
+#footer
+{
+	border-radius: 4em 4em 1em 1em;
+	background-color: #ffffff;
+	border: 1px solid #000000;
+	clear: both;
+	width: 59em;
+	height: 4em;
+	padding: 20px 20px 0px 10px;
+}
+
+#footer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;
+	color: #000000;	
+	float: left;
+}
+
+#footer a
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;	
+	padding-left: 5px;
+	color: #000000;
+}
+
+#footer img
+{
+	float: right;
+	margin-top: 8px;
+}
+
+#styleSelect
+{
+	vertical-align: -12px;
+}
+
+#footer #pagStyle {
+	float: right;
+	margin-right: 25px;
+	width: 150px;
+}

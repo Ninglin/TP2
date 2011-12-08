@@ -1,0 +1,591 @@
+body
+{
+	background-color: #ffffff;
+}
+
+#wrap
+{
+	background-color: #ffffff;
+	margin: 0em 12em 0em 12em;
+	padding: 0px 0px 0px 0px;
+	width: 61em;
+}
+
+#header
+{
+	border-radius: 1em 4em 1em 4em;
+	background-color: #000000;
+	padding-top:0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #aa1111;
+	height: 6em;
+	width: 61em;
+}
+
+#logo a
+{
+	background-image: url("../Images/headerImgstyle1.png");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	width: 454px;
+	height: 100px;
+	float:left;
+}
+
+#loginContainer{
+	width: 200px;
+	border-left: 1px solid #aa1111;
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	float: right;
+}
+
+#header #loginContainer .userName{
+	border-radius: 1em 1em 1em 1em;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color:gray;
+	padding-left: 5px;
+	margin-bottom: 3px;
+}
+
+#header #loginContainer .userPass{
+	border-radius: 1em 1em 1em 1em;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color: gray;
+	padding-left: 5px;
+	margin-bottom: 3px;
+}
+
+#header #loginContainer .logInButton{
+	background-image: url("../Images/logInButtonStyle1.png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header #loginContainer .logInButtonPressed{
+	background-image: url("../Images/logInButtonStyle1(pressed).png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header .searchButton
+{
+	background-image: url("../Images/searchButtonStyle1.png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header .searchButtonPressed
+{
+	background-image: url("../Images/searchButtonStyle1(pressed).png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header #searchBar
+{
+	padding-top: 0.5em;
+	float: right;
+}
+
+#header #searchBar #search
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color: gray;
+	border-radius: 1em 1em 1em 1em;
+	padding-left: 5px;
+	margin-bottom: 3px;
+	margin-right: 0.5em;
+}
+
+/*----------------------------------------*/
+/*************NAV********************/
+#navContainer 
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #ebebeb;
+	border: 1px solid #aa1111;
+	clear: both;
+	width: 100%;
+	height: 28px;
+	margin-bottom: 0.5em;
+}
+
+#navlist p{
+	display:none;
+}
+
+#navlist li
+{
+	border-radius: 1em 1em 1em 0em;
+	list-style: none;
+	background-color:#000000;
+	text-align: center;
+	min-width:100px;
+	margin-top: -12px;
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: 0.5em;
+	float: left;
+}
+
+#navlist .menu
+{
+	background-color:#ffffff;
+}
+
+#navlist li a
+{
+	border-radius: 1em 1em 1em 0em;
+	background-color: #000000;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:11pt;
+	display: block;
+	text-decoration: none;
+	border: 1px solid #aa1111;
+	color: #ffffff;
+}
+
+#navlist a:link, a:visited
+{
+	color: #ffffff;
+}
+
+#navlist a:hover, a:Active
+{
+	color:#ffffff;
+}
+
+#navlist a:hover
+{
+	background-color: #aa1111;
+	border: 1px solid #000000;
+}
+
+#navlist #current
+{
+	background-color: #000000;
+	color: #aa1111;
+	border: 1px solid #aa1111;
+}
+
+#submenu
+{
+	border-radius: 0em 1em 1em 1em;
+	position: absolute;
+	max-height:18px;
+	background-color: #ebebeb;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border: 1px solid #aa1111;	
+}
+
+#submenu li
+{
+	border-radius: 1em 1em 1em 1em;
+	list-style: none;
+	background-color:#000000;
+	text-align: center;
+	padding-top: 0;
+	margin: 0em 0.5em 0.5em 0.5em;
+	float: left;
+}
+
+#submenu .init
+{
+	display: none;
+}
+
+#submenu li a
+{
+	border-radius: 1em 1em 1em 1em;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:9pt;
+	display: block;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-decoration: none;
+	border: 1px solid #aa1111;
+}
+
+#submenu a:link, a:visited
+{
+	color: #ffffff;
+}
+
+#submenu a:hover, a:Active
+{
+	color:#ffffff;
+}
+
+#submenu a:hover
+{
+	background-color: #aa1111;
+	border: 1px solid #000000;
+}
+
+/*--------------------------------------------------*/
+/********************Last View**********************/
+#lastViewContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #ebebeb;
+	border: 1px solid #aa1111;
+	float: right;
+	width: 12em;
+	clear: right;
+	padding-right: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#lastViewContainer #title
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color: #000000;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: left;
+	padding-top: 0.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	border-bottom: 3px solid #aa1111;	
+}
+
+#lastViewContainer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color: #000000;
+	font-size: 14pt;
+	text-align: left;
+	padding-top: 0.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+#lastViewContainer #initial
+{
+	display: none;
+}
+
+#lastViewContainer img  
+{
+	border: 2px solid #aa1111;	
+	width: 180px;
+	height: 220px;
+	padding: 0;
+	margin-left: 0.5em;
+	margin-bottom: 0.25em;
+	margin-right: 0.5em;
+}
+/*----------------------------------------*/
+/***********Highlight***********/
+#highlightsContainer
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #ebebeb;
+	border: 1px solid #aa1111;
+	width: 78%;
+	height: 100%;
+	float: left;
+	margin-left: 0.25em;
+	margin-bottom: 0.5em;
+}
+
+#highlightsContainer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Helvetica, Arial, sans-serif;
+	color: #000000;
+	font-size: 18pt;
+	font-weight: bold;
+	display: block;
+	text-align: center;
+}
+
+#highlightedProductsContainer
+{
+	background-color: #ebebeb;
+	width: 90%;
+	height: 30%;
+	margin-top: 1%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 1%;
+	text-align: center;
+}
+
+#highlightedProductsContainer .prev
+{
+	background-image: url("../Images/previousButtonStyle1.png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+	float: left;
+	margin-right: 87px;
+}
+
+#highlightedProductsContainer .prevPressed
+{
+	background-image: url("../Images/previousButtonStyle1(pressed).png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+	float: left;
+	margin-right: 87px;
+}
+
+#highlightedProductsContainer .next
+{
+	background-image: url("../Images/nextButtonStyle1.png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+	float: right;
+}
+
+#highlightedProductsContainer .nextPressed
+{
+	background-image: url("../Images/nextButtonStyle1(pressed).png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+	float: right;
+}
+
+.scrollable
+{
+	position: relative;
+	width: 340px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.scrollable .items
+{
+	width:20000em;
+	position:absolute;
+	clear:both;
+}
+
+.items div
+{
+	float: left;
+}
+
+.scrollable img {
+	float:left;
+	background-color:#fff;
+	margin-right: 0.5em;
+	padding:2px;
+	border:2px solid #aa1111;
+	width:100px;
+	height:89px;
+	border-radius:4px;
+}
+/******Other products******/
+#otherproductsContainer	
+{
+	background-color: #ebebeb;
+	width: 90%;
+	height: 55%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 3%;
+}
+
+#otherproductsContainer table
+{
+	text-align: left;
+	font-size: 12pt;
+	border-collapse: collapse;	
+	width: 100%;
+	height: 100px;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:11pt;	
+	border: 1px solid #000000;
+}
+
+#otherproductsContainer td
+{
+	border: 1px solid #000000;
+}
+
+#otherproductsContainer  th {  
+	background-color: #CCCCCC;
+	text-align: center;
+	border-right: 1px solid black;
+} 
+
+/*************************************************
+**Estilos Datatable
+*************************************************/
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables features
+ */
+
+.dataTables_wrapper {
+	background-color: #ebebeb;
+	position: relative;
+	min-height: 302px;
+	height: 302px;
+	clear: both;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 250px;
+	margin-left: -125px;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #fff;
+	font-size: 11px;
+	padding: 2px 0;
+}
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+}
+
+.dataTables_filter {
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+.dataTables_info {
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	padding-top: 3px;
+	margin-right: 0;
+	width: 49%;
+	float: left;
+}
+
+.dataTables_paginate {
+	margin: 0.5em 0em 0.5em 0em;
+	float: right;
+	text-align: right;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('../Images/sort_asc.png') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('../Images/sort_desc.png') no-repeat center right;
+}
+
+.sorting {
+	background: url('../Images/sort_both.png') no-repeat center right;
+}
+
+.sorting_asc_disabled {
+	background: url('../Images/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+	background: url('../Images/sort_desc_disabled.png') no-repeat center right;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+
+.paging_full_numbers span.paginate_button,
+ 	.paging_full_numbers span.paginate_active {
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	border-radius: 5px;
+	padding: 2px 5px;
+	margin: 0px 3px;
+	cursor: pointer;
+}
+
+.paging_full_numbers span.paginate_button {
+	background-color: #cccccc;
+}
+
+.paging_full_numbers span.paginate_button:hover {
+	background-color: #999999;
+}
+
+.paging_full_numbers span.paginate_active {
+	background-color: #ff6600;
+}
+
+#otherproductsContainer .photo
+{
+	width: 100px;
+	height: 100px;
+	padding-bottom: 0px;
+}
+
+#otherproductsContainer .description
+{
+	width: 400px;
+	height: 100px;
+	overflow: hidden;
+}
+
+#otherproductsContainer .price
+{
+	width: 100px;
+}
+
+/*-------------------------------------------------*/
+/*********************Footer***********************/
+
+#footer
+{
+	border-radius: 1em 4em 1em 4em;
+	background-color: #000000;
+	border: 1px solid #aa1111;
+	clear: both;
+	width: 59em;
+	height: 4em;
+	padding: 20px 20px 0px 10px;
+}
+
+#footer p
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;
+	color: #FFFFFF;	
+	float: left;
+}
+
+#footer a
+{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;	
+	padding-left: 5px;
+	color: #aa1111;
+}
+
+#footer img
+{
+	float: right;
+	margin-top: 8px;
+}
+
+#styleSelect
+{
+	vertical-align: -12px;
+}
+
+#footer #pagStyle {
+	float: right;
+	margin-right: 25px;
+	width: 150px;
+}
