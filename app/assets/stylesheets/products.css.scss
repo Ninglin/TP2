@@ -9,10 +9,12 @@
 .list_description dl dt{
   font-weight: bold;
   font-size: 14pt;
+  width: 500px;
 }
 
 .list_description dl dd{
   font-size: 12pt;
+  width: 500px;
 }
 
 .list_line_odd{
@@ -20,5 +22,18 @@
 }
 
 .list_line_even{
-  background-color: rgb(80,80,80);
+  background-color: rgb(200,200,200);
+}
+
+.related_thumb{
+  width: 100px;
+  heigth: 100px;
+}
+
+.related {
+  float: left;
+}
+.scroll{
+  max-height:150px;
+  overflow-y: scroll;
 }

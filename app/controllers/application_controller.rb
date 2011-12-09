@@ -30,13 +30,21 @@ class ApplicationController < ActionController::Base
       else
         if account.password = params[:pass]
           if account.isAdmin
-            redirect_to admin_url
+            session[:user] = account.username
+            redirect_to admin_url            
           else
-            redirect_to "/index.html"
+            session[:user] = account.username
+            respond_to do |format|
+              format.json { render json: session}
+            end
+            #redirect_to "/index.html"
           end
         else
           flash.now[:alert] = "Invalid Password!"
-          redirect_to "/index.html"
+          #redirect_to "/index.html"
+          respond_to do |format|
+            format.json { render json: session} 
+          end
         end
       end
     end

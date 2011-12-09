@@ -1,4 +1,4 @@
-<%= form_for(@product) do |f| %>
+<%= form_for(@product, :html => {:multipart => true}) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -19,18 +19,31 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
-  </div>
+  
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
+  
   <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
+  	<%= f.label "Listing all images for product"%>
+  	<ul>	
+	  <% @images.each do |image| %>
+	  	<li class="thumb"><%= image_tag(image.url)%></li>
+	  <% end %> 		
+  	</ul>
   </div>
+  
+  <div class="field">
+     <%= f.label "Add a local Image to product" %><br />
+   	 <%= f.file_field :images%>
+  </div>
+  <h1>OR</h1>
+  <div class="field">
+  	<%= f.label "Add a remote Image to product" %><br />
+    <%= f.text_field :images, :include_id => false, :value => "" %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

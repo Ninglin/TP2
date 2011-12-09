@@ -1,4 +1,6 @@
 FoobarStore::Application.routes.draw do
+  get "image/new"
+  
   resources :accounts
 
   get "review/show"
@@ -22,6 +24,7 @@ FoobarStore::Application.routes.draw do
   match "/admin" => "Admin#index"
   match "/login" => "Application#log_in"
   match "/accounts/new" => "Account#create"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

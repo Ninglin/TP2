@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @images = Image.find_all_by_product_id(params[:id])
   end
 
   # POST /products
@@ -58,14 +59,27 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-
+    @images = Image.find_all_by_product_id(params[:id])
+    
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        if Image.find_by_url(product[images]).nil?
+          Image.create(:url => product[images], :product_id => params[:id])
+          if @product.update_attributes(params[:product])
+            format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+            format.json { head :ok }
+          else
+            format.html { render action: "edit" }
+            format.json { render json: @product.errors, status: :unprocessable_entity }
+          end
+        else
+          notice = "Image already exists!"
+          format.html { render action: "edit" }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

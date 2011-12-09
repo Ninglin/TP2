@@ -4299,10 +4299,10 @@ Product.create(:title => %{Codebreakers},
       it."--Robert Harris}, 
 		   :price => 5.49, 
 		   :category_id => Category.find_by_name("Books").id )
-Product.create(:title => %{Station X}, 
-		   :description => %{}, 
-		   :price => 2.81, 
-		   :category_id => Category.find_by_name("Books").id )
+# Product.create(:title => %{Station X}, 
+		   # :description => %{}, 
+		   # :price => 2.81, 
+		   # :category_id => Category.find_by_name("Books").id )
 Product.create(:title => %{Secret Days}, 
 		   :description => %{The Bletchley Park memoir of Lord Asa Briggs will be one of the most important
       documents to be published in 2011. Lord Briggs has long been regarded as one of Britain s most

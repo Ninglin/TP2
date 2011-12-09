@@ -28,19 +28,6 @@
 <p>
 	<strong>Related Products:</strong>
 </p>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Image</th>
-	</tr>
 
-<% @related.each do |related| %>
-	<tr>
-		<td><%= related.name %></td>
-		<td><%= image_tag(related.image_url)%></td>
-	</tr>
-<% end %>
-
-</table>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

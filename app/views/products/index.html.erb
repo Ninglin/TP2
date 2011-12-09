@@ -10,16 +10,24 @@
 			<th>Available Actions</th>
 		</tr>
 	<% @products.each do |product| %>
+	
 	  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-	  	<td><%= image_tag(Image.find_by_product_id(product.id).url, :class => 'list_image') %></td>
+	  	<% begin
+			image =  Image.find_by_product_id(product.id).url
+		rescue ActiveRecord::RecordNotFound%>
+	  	<td>Unexisting Preview</td>
+	  	<% else %>
+	  	<td><%= image_tag(image, :class => 'list_image') %></td>
+	  	<% end %>
 	    <td class='list_description'>
 	    	<dl>
 	    		<dt><%= product.title %></dt>
 	    		<dd><%= truncate(strip_tags(product.description), :length => 300) %></dd>
+	    	</dl>
 		</td>
-		<td>
+		<td class="scroll">
 			<% if !product.related_products.empty? %>
-			<table>
+			<table class='related'>
 				<tr>
 					<th>Title</th>
 					<th>Thumbnail</th>
@@ -27,7 +35,13 @@
 			<% product.related_products.each do |related| %>
 				<tr>
 					<td class="relName"><%= related.name %></td>
-					<td class="thumbnail"><%= image_tag(Image.find_by_product_id(related.id).url)%></td>
+					<% begin
+							image =  Image.find_by_product_id(Product.find_by_title(related.name).id).url
+					rescue ActiveRecord::RecordNotFound %>
+						<td> Thumbnail Unavailable</td>
+					<% else %>
+						<td class="thumbnail"><%= image_tag(image, :class => 'related_thumb')%></td>
+					<% end %>
 				</tr>		
 			<% end %>
 			</table>
@@ -38,9 +52,8 @@
 	
 	    <td class="list_actions">
 	    	<%= link_to 'View Product', product %><br />
-	    	<%= link_to 'Add Related Product', new_related_product_path+"?id=#{product.id}" %><br />
 	    	<%= link_to 'Edit Product', edit_product_path(product) %><br />
-	    	<%= link_to 'Remove Product', product, confirm: 'Are you sure you want to delete #{product.title} from the store?', method: :delete %>
+	    	<%= link_to 'Remove Product', product, confirm: "Are you sure you want to delete #{product.title} from the store?", method: :delete %>
 		</td>
 	  </tr>
 	<% end %>
