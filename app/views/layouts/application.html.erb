@@ -5,8 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<title> FooBar Online Store </title>
+  	<%= stylesheet_link_tag    "cart" if params[:action] == 'show' %>
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "application" %>
+  	<%= javascript_include_tag "aboutUs" if params[:action] == 'show' %>
   	<%= csrf_meta_tags %>
 	<!--<link rel="stylesheet" type="text/css" href="/FoobarStore/app/assets/stylesheets/index.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="CSS/indexPrint.css" media="print" />
