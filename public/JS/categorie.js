@@ -100,89 +100,164 @@ $(document).ready(function(){
 	});
 	
 	
-    $.get('products.xml', function(products){
-		var images = [];
-		var categories = [];
-		var prevIndex = 0;
-		var nextIndex = 3;
-		var i = 0;
-		
-        $(products).find('product').each(function(){
-			var categoryName = $(this).find("category").text();
+	$.get('/categories.json', function(categoryData){
+		alert('entrou 1');
+		$.each(categoryData,function(i, v){
+			$('#submenu').append('<li><a href="categorie.html">' + v.name + '</a></li>');
+	
+			$("#submenu li").click(function(){
+				$.cookie('catPage', $(this).text());
+			});	
 			
-			if(jQuery.inArray(categoryName, categories) == '-1'){
-				categories.push(categoryName);
+			if(v.name == $.cookie('catPage') ){
+				alert(v.id);
+				
+				$.get('/categories/'+v.id+'.json', function(productData){
+			
+					$.each(productData,function(j, d){
+			
+						// var images = [];
+						// var prevIndex = 0;
+						// var nextIndex = 3;
+						// var i = 0;
+						 				
+						// var lastView;
+				
+						if($.cookie('searchCookie')!=null){
+							$('#productTable .del').remove();
+						}
+						else{
+						
+						var exclusivity = [];
+						$('#productTable .del').remove();
+						// $(products).find('product').each(function(){
+			// 		
+							// var category = $(this).find('category').text();
+							// if(category == $.cookie('catPage')){
+								var name = d.title;
+								
+								if($.inArray(name, exclusivity)==-1){
+									exclusivity.push(name);
+									var description = d.description;
+									var imageurl = 0;
+									var price = d.price;
+									var desctab = description.substring(0,300)+'...';
+									// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');
+									$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
+									// if(name == $.cookie('productPage')){
+										// lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
+									// }
+								}
+							// }
+						// });
+					}
+			// 		
+					// $('#lastViewContainer div').html(lastView);
+					// $('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
+			// 		
+					var datatable = $("#productTable").dataTable({ 
+							"bSort": true,
+							"aaSorting": [],
+							"bLengthChange": false,
+							"iDisplayLength": 20,
+							"aoColumnDefs":{
+								"aSortable": true,
+								"sClass": "header",
+								"aTargets": [0,3]
+							},
+							 "aoColumns": [ 
+								null,
+								{"bSortable": false},
+								{"bSortable": false},
+								null
+							] ,
+							"bPaginate": true,
+							"oLanguage": {
+								"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+								 "sInfoFiltered": " - searched from _MAX_ records",
+							},	
+							"sPaginationType": "full_numbers",
+							"bAutoWidth": false
+					}); 
+				
+				
+				
+					});
+				});
 			}
 		});
-		
-		$.each(categories, function(){
-			$('#submenu').append('<li><a id="' + i +'" href="categorie.html">' + this + '</a></li>');
-			i++;
-		});
-		
-		$("#submenu li").click(function(){
-			$.cookie('catPage', $(this).text());
-		});
-		
-		
-		
-		var lastView;
-		
-		if($.cookie('searchCookie')!=null){
-			$('#productTable .del').remove();
-		}
-		else{
-			
-			var exclusivity = [];
-			$('#productTable .del').remove();
-			$(products).find('product').each(function(){
-		
-				var category = $(this).find('category').text();
-				if(category == $.cookie('catPage')){
-					var name = $(this).find('name:first').text();
-					if($.inArray(name, exclusivity)==-1){
-						exclusivity.push(name);
-						var description = $(this).find('description').text();
-						var imageurl = $(this).find('main_photo').text();
-						var price = $(this).find('price').text();
-						var desctab = description.substring(0,300)+'...';
-						images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');
-						$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
-						if(name == $.cookie('productPage')){
-							lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
-						}
-					}
-				}
-			});
-		}
-		
-		$('#lastViewContainer div').html(lastView);
-		$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
-		
-		var datatable = $("#productTable").dataTable({ 
-				"bSort": true,
-				"aaSorting": [],
-				"bLengthChange": false,
-				"iDisplayLength": 20,
-				"aoColumnDefs":{
-					"aSortable": true,
-					"sClass": "header",
-					"aTargets": [0,3]
-				},
-				 "aoColumns": [ 
-					null,
-					{"bSortable": false},
-					{"bSortable": false},
-					null
-				] ,
-				"bPaginate": true,
-				"oLanguage": {
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-					 "sInfoFiltered": " - searched from _MAX_ records",
-				},	
-				"sPaginationType": "full_numbers",
-				"bAutoWidth": false
-		}); 
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+    $.get('products.xml', function(products){
+		// var images = [];
+		// var prevIndex = 0;
+		// var nextIndex = 3;
+		// var i = 0;
+// 				
+		// var lastView;
+// 		
+		// if($.cookie('searchCookie')!=null){
+			// $('#productTable .del').remove();
+		// }
+		// else{
+// 			
+			// var exclusivity = [];
+			// $('#productTable .del').remove();
+			// $(products).find('product').each(function(){
+// 		
+				// var category = $(this).find('category').text();
+				// if(category == $.cookie('catPage')){
+					// var name = $(this).find('name:first').text();
+					// if($.inArray(name, exclusivity)==-1){
+						// exclusivity.push(name);
+						// var description = $(this).find('description').text();
+						// var imageurl = $(this).find('main_photo').text();
+						// var price = $(this).find('price').text();
+						// var desctab = description.substring(0,300)+'...';
+						// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');
+						// $('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
+						// if(name == $.cookie('productPage')){
+							// lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
+						// }
+					// }
+				// }
+			// });
+		// }
+// 		
+		// $('#lastViewContainer div').html(lastView);
+		// $('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
+// 		
+		// var datatable = $("#productTable").dataTable({ 
+				// "bSort": true,
+				// "aaSorting": [],
+				// "bLengthChange": false,
+				// "iDisplayLength": 20,
+				// "aoColumnDefs":{
+					// "aSortable": true,
+					// "sClass": "header",
+					// "aTargets": [0,3]
+				// },
+				 // "aoColumns": [ 
+					// null,
+					// {"bSortable": false},
+					// {"bSortable": false},
+					// null
+				// ] ,
+				// "bPaginate": true,
+				// "oLanguage": {
+					// "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+					 // "sInfoFiltered": " - searched from _MAX_ records",
+				// },	
+				// "sPaginationType": "full_numbers",
+				// "bAutoWidth": false
+		// }); 
 		
 		if($.cookie('searchCookie')!=null){
 			var procura = $.cookie('searchCookie');
