@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
   	
   	def log_in
       begin
+        @loggedIn = false
+        @admPermission = false
         account = Account.find_by_username!(params[:user])
       rescue ActiveRecord::RecordNotFound
           flash.now[:alert] = "Invalid Username! Please specify a valid username or register"
@@ -30,9 +32,11 @@ class ApplicationController < ActionController::Base
       else
         if account.password = params[:pass]
           if account.isAdmin
+            @admPermission = true
             session[:user] = account.username
             redirect_to admin_url            
           else
+            @loggedIn = true
             session[:user] = account.username
             respond_to do |format|
               format.json { render json: session}

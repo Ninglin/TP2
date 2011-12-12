@@ -1,5 +1,21 @@
-<link type="text/css" rel="stylesheet" src="/stylesheet/index.css">
-<div class="product_list">
+<div class="welcomeBoxProduct">
+	<h1>Foobar Online Store Management Area</h1>
+</div>
+<div id="menuBoxProduct">
+	<ul id="menu">
+		<li class="product">
+			<a href="/products">Manage Products</a>
+			<ul>
+				<li><%= link_to 'New Product', new_product_path %></li>
+			</ul>
+		</li>
+		<li class="category">
+			<a href="/categories">Manage Categories</a>
+		</li>
+	</ul>
+</div>
+
+<div id="contentBoxProduct">
 	<h1>Product Management</h1>
 	
 	<table>
@@ -59,6 +75,3 @@
 	<% end %>
 	</table>
 </div>
-<br />
-
-<%= link_to 'New Product', new_product_path %>

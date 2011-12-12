@@ -1,6 +1,22 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.welcomeBoxProduct{
+  border-radius: 1em 1em 0em 0em;
+  h1{
+    text-align: center;
+    font-family: "Myriad Pro";
+    font-size: 20pt;
+    color: #CD3700;
+    
+  }
+  margin:0;
+  background-color: #000000;
+  width: 1331px;;
+  height: 100px;
+  border: 1px solid #CD3700;
+}
+
 .list_image{
   width:  150px;
   height: 150px;
@@ -33,7 +49,92 @@
 .related {
   float: left;
 }
-.scroll{
-  max-height:150px;
-  overflow-y: scroll;
+
+#menuBoxProduct
+{
+  border-radius: 0em 0em 0em 1em;
+  background-color: #000000;
+  float: left;
+  width: 200px;
+  height:100%;
+  border-top:0;
+  border-left: 1px solid #cd3700;
+  border-right: 1px solid #cd3700;
+  border-bottom: 1px solid #cd3700;
+  margin-bottom: 0.5em;
+}
+
+#menu
+{
+  margin: 0;
+  width: 11em;
+  height: 100%;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-bottom: 0.5em;
+} 
+
+.product{
+  background-color: #000000;
+  border: 0;
+}
+
+#menu .category
+{
+  border-radius: 1em 1em 1em 1em;
+  list-style: none;
+  background-color:#cd3700;
+  text-align: left;
+  margin: 0.5em 0.5em 0.5em 0.5em;
+}
+// 
+// #menu .menu
+// {
+  // background-color:#ffffff;
+// }
+
+#menu li a
+{
+  border-radius: 1em 1em 1em 1em;
+  background-color: #cd3700;
+  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+  font-size:11pt; 
+  display: block;
+  text-decoration: none;
+  padding: .25em;
+  border: 1px solid #000000;
+}
+
+#menu a:link, a:visited
+{
+  color: #000000;
+}
+
+#menu a:hover, a:Active
+{
+  color:#000000;
+}
+
+#menu a:hover
+{
+  background-color: #ff6600;
+  border: 1px solid #000000;
+}
+
+#contentBoxProduct{
+  p{
+    margin:0;
+  }
+  
+  border-radius:0em 0em 1em 0em;
+  width:1114px;
+  height: 100%;
+  float:right;
+  color: #cd3700;
+  margin: 0px;
+  background-color: #000000;
+  font-family: "Myriad Pro";
+  padding-left:1em;
+  padding-top: 1em;
+  border-bottom: 1px solid #cd3700;
+  border-right: 1px solid #cd3700;
 }

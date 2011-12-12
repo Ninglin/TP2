@@ -22,6 +22,8 @@ FoobarStore::Application.routes.draw do
   match "/category/:id" => "Category#show"
   match "/product/:id" => "Review#show"
   match "/admin" => "Admin#index"
+  # match "/admin/products" => "Product#index"
+  # match "/admin/products" => "Category#index"
   match "/login" => "Application#log_in"
   match "/accounts/new" => "Account#create"
   
