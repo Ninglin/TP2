@@ -121,11 +121,11 @@ $(document).ready(function(){
 		
 				});
 		
-			});
-			
-			
+			});	
 		});
 	});
+	
+	
 		
 		
 		
