@@ -1,8 +1,27 @@
-<link type="text/css" rel="stylesheet" src="/stylesheet/index.css">
-<div class="product_list">
+<div class="welcomeBoxProduct">
+	<h1>Foobar Online Store Management Area</h1>
+</div>
+<div id="menuBoxProduct">
+	<ul id="menu">
+		<li class="product">
+			<a href="/products">Manage Products</a>
+			<ul>
+				<li><%= link_to 'New Product', new_product_path %></li>
+			</ul>
+		</li>
+		<li class="category">
+			<a href="/categories">Manage Categories</a>
+		</li>
+		<li class="logout">
+			<a href="/logout">Log out</a>
+		</li>
+	</ul>
+</div>
+
+<div id="contentBoxProduct">
 	<h1>Product Management</h1>
 	
-	<table>
+	<table >
 		<tr class="list_line_even">
 			<th>Preview Product</th>
 			<th>Product Details</th>
@@ -17,7 +36,7 @@
 		rescue ActiveRecord::RecordNotFound%>
 	  	<td>Unexisting Preview</td>
 	  	<% else %>
-	  	<td><%= image_tag(image, :class => 'list_image') %></td>
+	  	<td class="preview"><%= image_tag(image, :class => 'list_image') %></td>
 	  	<% end %>
 	    <td class='list_description'>
 	    	<dl>
@@ -59,6 +78,3 @@
 	<% end %>
 	</table>
 </div>
-<br />
-
-<%= link_to 'New Product', new_product_path %>

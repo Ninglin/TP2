@@ -5,3 +5,27 @@
  *= require_self
  *= require_tree . 
 */
+#content
+{
+	background-color: #CCCCCC;
+	margin: 0em 12em 0em 12em;
+	padding: 0px 0px 0px 0px;
+	width: 61em;
+}
+
+.mainApp
+{
+	border-radius: 1em 1em 1em 1em;
+	background-color: #FFFFFF;
+	border: 1px solid #ff6600;
+	font-family: "Myriad Pro";
+	width: 68%;
+	height: 100%;
+	float: right;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	margin-left: 0.25em;
+	margin-bottom: 0.5em;
+}

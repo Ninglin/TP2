@@ -98,18 +98,37 @@ $(document).ready(function(){
 	});
 	
 	$.get('/categories.json', function(data){
-		alert('entrou 1');
+		// alert('entrou 1');
 		$.each(data,function(i, v){
 			$('#submenu').append('<li><a href="categorie.html">' + v.name + '</a></li>');
 	
 			$("#submenu li").click(function(){
 				$.cookie('catPage', $(this).text());
 			});
+			
+			var lastView;
+			$.get('/categories/'+v.id+'.json', function(productData){
+				$.each(productData,function(j, d){
+					var name = d.title;
+					var imageurl = 0;
+					if(name == $.cookie('productPage')){
+						lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
+						alert(name);
+					}
+					
+					$('#lastViewContainer div').html(lastView);
+					$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
+		
+				});
+		
+			});
+			
+			
 		});
 	});
 		
 		
-		// var lastView;
+		
 		// $(products).find('product').each(function(){
 // 		
 			// var name = $(this).find('name:first').text();
@@ -118,14 +137,10 @@ $(document).ready(function(){
 			// var imageurl = $(this).find('main_photo').text();
 			// var price = $(this).find('price').text();
 			// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');
-			// if(name == $.cookie('productPage')){
-				// lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
-			// }
+			
 		// });
-// 		
-		// $('#lastViewContainer div').html(lastView);
-		// $('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
-// 		
+		
+		
 		// prevIndex = images.length-1;
 // 		
 		// for(var i = 0; i < images.length/3; i++){
