@@ -115,10 +115,13 @@ $(document).ready(function(){
 			$.get('/categories/'+v.id+'.json', function(productData){
 				$.each(productData,function(j, d){
 					var name = d.title;
-					var imageurl = 0;
 					if(name == $.cookie('productPage')){
-						lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
-						alert(name);
+						$.get('/images.json?product_id='+d.id, function(imageData){
+							var imageurl = imageData[0].url;
+							lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
+						});
+						
+						// alert(name);
 					}
 					
 					$('#lastViewContainer div').html(lastView);
@@ -130,16 +133,10 @@ $(document).ready(function(){
 			
 			if($.cookie('searchCookie')==null)
 				if(v.name == $.cookie('catPage') ){
-				
-					$.get('/categories/'+v.id+'.json', function(productData){
-			
-						$.each(productData,function(j, d){
-			
-							// var images = [];
-							// var prevIndex = 0;
-							// var nextIndex = 3;
-							// var i = 0;
 					
+					$.get('/categories/'+v.id+'.json', function(productData){
+						
+						$.each(productData,function(j, d){
 							if($.cookie('searchCookie')!=null){
 								$('#productTable .del').remove();
 							}
@@ -150,45 +147,48 @@ $(document).ready(function(){
 				
 								var name = d.title;
 									
-								if($.inArray(name, exclusivity)==-1){
+								// if($.inArray(name, exclusivity)==-1){
 									exclusivity.push(name);
 									var description = d.description;
-									var imageurl = 0;
 									var price = (d.price).substring(0,5);
 									var desctab = description.substring(0,300)+'...';
-									// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');
-									$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
-								}
+									$.get('/images.json?product_id='+d.id, function(imageData){
+										var imageurl = imageData[0].url;
+										$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
+									});
+									// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');			
+								// }
 							}
 					});
-				
-					var datatable = $("#productTable").dataTable({ 
-							"bSort": true,
-							"aaSorting": [],
-							"bLengthChange": false,
-							"iDisplayLength": 20,
-							"aoColumnDefs":{
-								"aSortable": true,
-								"sClass": "header",
-								"aTargets": [0,3]
-							},
-							 "aoColumns": [ 
-								null,
-								{"bSortable": false},
-								{"bSortable": false},
-								null
-							] ,
-							"bPaginate": true,
-							"oLanguage": {
-								"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-								 "sInfoFiltered": " - searched from _MAX_ records",
-							},	
-							"sPaginationType": "full_numbers",
-							"bAutoWidth": false
-					}); 
-				
+					
+					$('#productTable').ajaxSuccess(function(){
+						$("#productTable").dataTable({ 
+									"bSort": true,
+									"aaSorting": [],
+									"bLengthChange": false,
+									"iDisplayLength": 20,
+									"aoColumnDefs":{
+										"aSortable": true,
+										"sClass": "header",
+										"aTargets": [0,3]
+									},
+									 "aoColumns": [ 
+										null,
+										{"bSortable": false},
+										{"bSortable": false},
+										null
+									] ,
+									"bPaginate": true,
+									"oLanguage": {
+										"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+										 "sInfoFiltered": " - searched from _MAX_ records",
+									},	
+									"sPaginationType": "full_numbers",
+									"bAutoWidth": false
+							}); 
+					});
 					$("#productTable tr td a img").click(function(){
-						alert($(this).attr('alt'));
+						//alert($(this).attr('alt'));
 						$.cookie('productPage', $(this).attr('alt'));
 					});
 				
@@ -248,7 +248,7 @@ $(document).ready(function(){
 					});
 					
 					$("#productTable tr td a img").click(function(){
-						alert($(this).attr('alt'));
+						// alert($(this).attr('alt'));
 						$.cookie('productPage', $(this).attr('alt'));
 					});
 					
