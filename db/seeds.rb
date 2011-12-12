@@ -4082,8 +4082,7 @@ Product.create(:title => %{Maths Credit 2011 SQA Past Papers (Standard Grade)},
 		   :description => %{###############################################################################################################################################################################################################################################################}, 
 		   :price => 7.19, 
 		   :category_id => Category.find_by_name("Books").id )
-Product.create(:title => %{Staedtler Triplus Colour 323 SB20 Fibre Tip Pens In Desktop Box - 20 Assorted
-      Colours}, 
+Product.create(:title => %{Staedtler Triplus Colour 323 SB20 Fibre Tip Pens In Desktop Box - 20 Assorted Colours}, 
 		   :description => %{Staedtler triplus color fibre-tips are high quality fibre-tip pens with sturdy,
       pressure-resistant tips. The pens have an ergonomic triangular barrel for relaxed and easy
       writing. The water-based ink washes out of most textiles. The pens come supplied in the
@@ -4720,8 +4719,7 @@ Image.create(:url => "http://ecx.images-amazon.com/images/I/51TJQ9MPDYL._BO2,204
 Image.create(:url => "http://ecx.images-amazon.com/images/I/51AhNTc66DL._SL500_AA240_.jpg", 
 		 :product_id => Product.find_by_title(%{Maths Credit 2011 SQA Past Papers (Standard Grade)}).id )
 Image.create(:url => "http://ecx.images-amazon.com/images/I/51LMuSwq2KL._SL500_AA280_.jpg", 
-		 :product_id => Product.find_by_title(%{Staedtler Triplus Colour 323 SB20 Fibre Tip Pens In Desktop Box - 20 Assorted
-      Colours}).id )
+		 :product_id => Product.find_by_title(%{Staedtler Triplus Colour 323 SB20 Fibre Tip Pens In Desktop Box - 20 Assorted Colours}).id )
 Image.create(:url => "http://ecx.images-amazon.com/images/I/519nAd3oCXL._SL500_AA240_.jpg", 
 		 :product_id => Product.find_by_title(%{Learning to Program with Alice (w/CD-ROM)}).id )
 Image.create(:url => "http://ecx.images-amazon.com/images/I/515Q48TJQAL._SL500_AA240_.jpg", 
@@ -5316,36 +5314,36 @@ Account.delete_all
 Account.create(:username => "admin", :password =>"admin123", :firstname => "X", :lastname => "Y", :address => "Z", :isAdmin => true)
 Account.create(:username => "Ninglin", :password =>"12345", :firstname => "Hugo", :lastname => "Tavares", :address => "Rua dos Cooperativistas, 62, Monte da Caparica", :isAdmin => false)
 
-Highlights.delete_all
-Highlights.create(:product_id => Product.find_by_title('Code').id, :category_id => Category.find_by_name("Books").id)
-Highlights.create(:product_id => Product.find_by_title('The Mythical Man Month and Other Essays on Software Engineering').id, :category_id => Category.find_by_name("Books").id)
-Highlights.create(:product_id => Product.find_by_title('Programming in Haskell').id, :category_id => Category.find_by_name("Books").id)
-Highlights.create(:product_id => Product.find_by_title('A First Course in Database Systems').id, :category_id => Category.find_by_name("Books").id)
-Highlights.create(:product_id => Product.find_by_title('The C Programming Language (2nd Edition)').id, :category_id => Category.find_by_name("Books").id)
-Highlights.create(:product_id => Product.find_by_title('Algorithmic Problem Solving').id, :category_id => Category.find_by_name("Books").id)
+Highlight.delete_all
+Highlight.create(:product_id => Product.find_by_title('Code').id, :category_id => Category.find_by_name("Books").id)
+Highlight.create(:product_id => Product.find_by_title('The Mythical Man Month and Other Essays on Software Engineering').id, :category_id => Category.find_by_name("Books").id)
+Highlight.create(:product_id => Product.find_by_title('Programming in Haskell').id, :category_id => Category.find_by_name("Books").id)
+Highlight.create(:product_id => Product.find_by_title('A First Course in Database Systems').id, :category_id => Category.find_by_name("Books").id)
+Highlight.create(:product_id => Product.find_by_title('The C Programming Language (2nd Edition)').id, :category_id => Category.find_by_name("Books").id)
+Highlight.create(:product_id => Product.find_by_title('Algorithmic Problem Solving').id, :category_id => Category.find_by_name("Books").id)
 
-Highlights.create(:product_id => Product.find_by_title("Ruby Pocket Reference (Pocket Reference (O'Reilly)) eBook").id, :category_id => Category.find_by_name("Kindle Store").id)
-Highlights.create(:product_id => Product.find_by_title("User Stories Applied").id, :category_id => Category.find_by_name("Kindle Store").id)
-Highlights.create(:product_id => Product.find_by_title("The Ruby Way, Second Edition").id, :category_id => Category.find_by_name("Kindle Store").id)
-Highlights.create(:product_id => Product.find_by_title("The Ruby Programming Language eBook").id, :category_id => Category.find_by_name("Kindle Store").id)
+Highlight.create(:product_id => Product.find_by_title("Ruby Pocket Reference (Pocket Reference (O'Reilly)) eBook").id, :category_id => Category.find_by_name("Kindle Store").id)
+Highlight.create(:product_id => Product.find_by_title("User Stories Applied").id, :category_id => Category.find_by_name("Kindle Store").id)
+Highlight.create(:product_id => Product.find_by_title("The Ruby Way, Second Edition").id, :category_id => Category.find_by_name("Kindle Store").id)
+Highlight.create(:product_id => Product.find_by_title("The Ruby Programming Language eBook").id, :category_id => Category.find_by_name("Kindle Store").id)
 
 
-Highlights.create(:product_id => Product.find_by_title("Nikon D5100 Digital SLR Camera").id, :category_id => Category.find_by_name("Electronics").id)
-Highlights.create(:product_id => Product.find_by_title("Nikon D7000 18-105 VR Kit").id, :category_id => Category.find_by_name("Electronics").id)
-Highlights.create(:product_id => Product.find_by_title("Nikon D7000 Body Only").id, :category_id => Category.find_by_name("Electronics").id)
-Highlights.create(:product_id => Product.find_by_title("LG 42LK450U 42-inch Widescreen Full HD 1080p LCD TV").id, :category_id => Category.find_by_name("Electronics").id)
-Highlights.create(:product_id => Product.find_by_title("Nikon D90 Body Only").id, :category_id => Category.find_by_name("Electronics").id)
-Highlights.create(:product_id => Product.find_by_title("Humax Freeview playback Digital TV Recorder PVR-9150T").id, :category_id => Category.find_by_name("Electronics").id)
+Highlight.create(:product_id => Product.find_by_title("Nikon D5100 Digital SLR Camera").id, :category_id => Category.find_by_name("Electronics").id)
+Highlight.create(:product_id => Product.find_by_title("Nikon D7000 18-105 VR Kit").id, :category_id => Category.find_by_name("Electronics").id)
+Highlight.create(:product_id => Product.find_by_title("Nikon D7000 Body Only").id, :category_id => Category.find_by_name("Electronics").id)
+Highlight.create(:product_id => Product.find_by_title("LG 42LK450U 42-inch Widescreen Full HD 1080p LCD TV").id, :category_id => Category.find_by_name("Electronics").id)
+Highlight.create(:product_id => Product.find_by_title("Nikon D90 Body Only").id, :category_id => Category.find_by_name("Electronics").id)
+Highlight.create(:product_id => Product.find_by_title("Humax Freeview playback Digital TV Recorder PVR-9150T").id, :category_id => Category.find_by_name("Electronics").id)
 
-Highlights.create(:product_id => Product.find_by_title("My Book Essential WDBAAF0020HBK - Hard drive - 2 TB - external - Hi-Speed USB").id, :category_id => Category.find_by_name("Computers & Accessories").id)
-Highlights.create(:product_id => Product.find_by_title("Olympus TRHC-120 Traveller Hard Case").id, :category_id => Category.find_by_name("Computers & Accessories").id)
-Highlights.create(:product_id => Product.find_by_title("Transcend 16GB SDHC Class 10 Memory Card").id, :category_id => Category.find_by_name("Computers & Accessories").id)
-Highlights.create(:product_id => Product.find_by_title("SANDISK 8 GB Secure Digital SDHC Card - Frustration Free Packaging").id, :category_id => Category.find_by_name("Computers & Accessories").id)
-Highlights.create(:product_id => Product.find_by_title("WD My Book Essential 3.0 2 TB External Hard Drive (USB 3.0/2.0)").id, :category_id => Category.find_by_name("Computers & Accessories").id)
-Highlights.create(:product_id => Product.find_by_title("DVD Minus (16X speed) Inkjet printable spindle 50").id, :category_id => Category.find_by_name("Computers & Accessories").id)
+Highlight.create(:product_id => Product.find_by_title("My Book Essential WDBAAF0020HBK - Hard drive - 2 TB - external - Hi-Speed USB").id, :category_id => Category.find_by_name("Computers & Accessories").id)
+Highlight.create(:product_id => Product.find_by_title("Olympus TRHC-120 Traveller Hard Case").id, :category_id => Category.find_by_name("Computers & Accessories").id)
+Highlight.create(:product_id => Product.find_by_title("Transcend 16GB SDHC Class 10 Memory Card").id, :category_id => Category.find_by_name("Computers & Accessories").id)
+Highlight.create(:product_id => Product.find_by_title("SANDISK 8 GB Secure Digital SDHC Card - Frustration Free Packaging").id, :category_id => Category.find_by_name("Computers & Accessories").id)
+Highlight.create(:product_id => Product.find_by_title("WD My Book Essential 3.0 2 TB External Hard Drive (USB 3.0/2.0)").id, :category_id => Category.find_by_name("Computers & Accessories").id)
+Highlight.create(:product_id => Product.find_by_title("DVD Minus (16X speed) Inkjet printable spindle 50").id, :category_id => Category.find_by_name("Computers & Accessories").id)
 
-Highlights.create(:product_id => Product.find_by_title("Microsoft Office 2010 Home and Student, 3 Users (PC)").id, :category_id => Category.find_by_name("Software").id)
-Highlights.create(:product_id => Product.find_by_title("Microsoft Office 2010 Home and Student, 1 User [Product Key Card] (PC)").id, :category_id => Category.find_by_name("Software").id)
-Highlights.create(:product_id => Product.find_by_title("Office for Mac 2011, Home and Student Edition (1 User, 1Mac)").id, :category_id => Category.find_by_name("Software").id)
+Highlight.create(:product_id => Product.find_by_title("Microsoft Office 2010 Home and Student, 3 Users (PC)").id, :category_id => Category.find_by_name("Software").id)
+Highlight.create(:product_id => Product.find_by_title("Microsoft Office 2010 Home and Student, 1 User [Product Key Card] (PC)").id, :category_id => Category.find_by_name("Software").id)
+Highlight.create(:product_id => Product.find_by_title("Office for Mac 2011, Home and Student Edition (1 User, 1Mac)").id, :category_id => Category.find_by_name("Software").id)
 
-Highlights.create(:product_id => Product.find_by_title("Staedtler Triplus Colour 323 SB20 Fibre Tip Pens In Desktop Box - 20 Assorted Colours").id, :category_id => Category.find_by_name("Office Products").id)
+Highlight.create(:product_id => Product.find_by_title("Staedtler Triplus Colour 323 SB20 Fibre Tip Pens In Desktop Box - 20 Assorted Colours").id, :category_id => Category.find_by_name("Office Products").id)
