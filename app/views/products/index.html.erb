@@ -12,13 +12,16 @@
 		<li class="category">
 			<a href="/categories">Manage Categories</a>
 		</li>
+		<li class="logout">
+			<a href="/logout">Log out</a>
+		</li>
 	</ul>
 </div>
 
 <div id="contentBoxProduct">
 	<h1>Product Management</h1>
 	
-	<table>
+	<table >
 		<tr class="list_line_even">
 			<th>Preview Product</th>
 			<th>Product Details</th>
@@ -33,7 +36,7 @@
 		rescue ActiveRecord::RecordNotFound%>
 	  	<td>Unexisting Preview</td>
 	  	<% else %>
-	  	<td><%= image_tag(image, :class => 'list_image') %></td>
+	  	<td class="preview"><%= image_tag(image, :class => 'list_image') %></td>
 	  	<% end %>
 	    <td class='list_description'>
 	    	<dl>

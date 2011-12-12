@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
       begin
         @loggedIn = false
         @admPermission = false
+        @content_for_admin = false
         account = Account.find_by_username!(params[:user])
       rescue ActiveRecord::RecordNotFound
           flash.now[:alert] = "Invalid Username! Please specify a valid username or register"
@@ -33,11 +34,19 @@ class ApplicationController < ActionController::Base
         if account.password = params[:pass]
           if account.isAdmin
             @admPermission = true
+            @content_for_admin = true
             session[:user] = account.username
-            redirect_to admin_url            
+            session[:logged_in] = true;
+            session[:admin] = true
+            respond_to do |format|
+              format.json { render json: session}
+            end
+            # redirect_to admin_url            
           else
             @loggedIn = true
             session[:user] = account.username
+            session[:logged_in] = true;
+            session[:admin] = false
             respond_to do |format|
               format.json { render json: session}
             end

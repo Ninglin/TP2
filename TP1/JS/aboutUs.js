@@ -87,24 +87,16 @@ if($.cookie('currentStyle')=='Orange'){
 		$('#submenu').slideUp();
 	});
 	
-    $.get('products.xml', function(products){
-		var categories = [];
-		
-        $(products).find('product').each(function(){
-			var categoryName = $(this).find("category").text();
-			
-			if(jQuery.inArray(categoryName, categories) == '-1'){
-				categories.push(categoryName);
-			}
-		});
-		$.each(categories, function(){
-			$('#submenu').append('<li><a href="categorie.html">' + this + '</a></li>');
-		});
-		
-		$("#submenu li").click(function(){
-			$.cookie('catPage', $(this).text());
+    $.get('/categories.json', function(data){
+		$.each(data,function(i, v){
+			$('#submenu').append('<li><a href="categorie.html">' + v.name + '</a></li>');
+	
+			$("#submenu li").click(function(){
+				$.cookie('catPage', $(this).text());
+			});
 		});
 	});
+		
 	
 	$("#searchBar form").submit(function() {
 		var procura = $("#search").val();

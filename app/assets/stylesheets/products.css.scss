@@ -73,9 +73,22 @@
   margin-bottom: 0.5em;
 } 
 
-.product{
+#menu .product{
+  border-radius: 1em 1em 1em 1em;
+  list-style: none;
+  background-color:#cd3700;
+  text-align: left;
+  margin: 0.5em 0.5em 0.5em 0.5em;
   background-color: #000000;
   border: 0;
+}
+
+#menu .logout{
+  border-radius: 1em 1em 1em 1em;
+  list-style: none;
+  background-color:#cd3700;
+  text-align: left;
+  margin: 0.5em 0.5em 0.5em 0.5em;
 }
 
 #menu .category
@@ -86,11 +99,6 @@
   text-align: left;
   margin: 0.5em 0.5em 0.5em 0.5em;
 }
-// 
-// #menu .menu
-// {
-  // background-color:#ffffff;
-// }
 
 #menu li a
 {
@@ -120,21 +128,26 @@
   border: 1px solid #000000;
 }
 
-#contentBoxProduct{
-  p{
-    margin:0;
-  }
-  
-  border-radius:0em 0em 1em 0em;
-  width:1114px;
+.mainApp {
   height: 100%;
-  float:right;
-  color: #cd3700;
-  margin: 0px;
-  background-color: #000000;
-  font-family: "Myriad Pro";
-  padding-left:1em;
-  padding-top: 1em;
-  border-bottom: 1px solid #cd3700;
-  border-right: 1px solid #cd3700;
+  #contentBoxProduct{
+    h1{
+      color: #cd3700;
+    }
+    table{
+      .preview{
+        width:150px;
+      }
+    }
+    border-radius:0em 0em 1em 0em;
+    width:1114px;
+    margin: 0px;
+    float:right;
+    background-color: #000000;
+    font-family: "Myriad Pro";
+    padding-left:1em;
+    padding-top: 1em;
+    border-bottom: 1px solid #cd3700;
+    border-right: 1px solid #cd3700;
+  }
 }
