@@ -112,8 +112,10 @@ $(document).ready(function(){
 					var name = d.title;
 					var imageurl = 0;
 					if(name == $.cookie('productPage')){
-						lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
-						alert(name);
+						$.get('/images.json?product_id='+d.id, function(imageData){
+							var imageurl = imageData[0].url;
+							lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
+						});
 					}
 					
 					$('#lastViewContainer div').html(lastView);
