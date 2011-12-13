@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
             @admPermission = true
             @content_for_admin = true
             session[:user] = account.username
-            session[:logged_in] = true;
+            session[:logged_in] = true
             session[:admin] = true
             respond_to do |format|
               format.json { render json: session}
@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
           else
             @loggedIn = true
             session[:user] = account.username
-            session[:logged_in] = true;
+            session[:logged_in] = true
             session[:admin] = false
             respond_to do |format|
               format.json { render json: session}
