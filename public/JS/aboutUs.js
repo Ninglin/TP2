@@ -93,6 +93,7 @@ if($.cookie('currentStyle')=='Orange'){
 	
 			$("#submenu li").click(function(){
 				$.cookie('catPage', $(this).text());
+				$.cookie('searchCookie', null);
 			});
 		});
 	});
