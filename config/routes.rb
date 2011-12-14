@@ -1,4 +1,6 @@
 FoobarStore::Application.routes.draw do
+  get "sessions/new"
+
   get "image/new"
   
   resources :accounts
@@ -16,16 +18,23 @@ FoobarStore::Application.routes.draw do
   resources :carts
 
  # get "store/index"
-
+  resources :users
+  
+  resources :sessions
+  
   resources :products
   
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "login" => "sessions#new", :as => "log_in"
+  match "/register" => "Account#new", :as => "register"
+
   match "/category/:id" => "Category#show"
   match "/product/:id" => "Review#show"
   match "/admin" => "Admin#index"
   # match "/admin/products" => "Product#index"
   # match "/admin/products" => "Category#index"
-  match "/login" => "Application#log_in"
-  match "/accounts/new" => "Account#create"
+  post "/login" => "Sessions#create"
+  match "/accounts/new" => "Account#new"
   match "/images" => "Image#index"
   
   # The priority is based upon order of creation:

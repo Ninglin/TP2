@@ -7,5 +7,4 @@ class ReviewController < ApplicationController
       format.json { render json: @product }
     end
   end
-
 end

@@ -1,5 +1,39 @@
 $(document).ready(function(){
 
+	function login(){
+		$.get('/login.html', function(data) {
+			$('#loginContainer').html(data);
+			$('.userName').focusin(function() {
+				$(this).val("");
+			});
+	
+			$('.userName').focusout(function() {
+				if($(this).val() == "")
+					$(this).val("User Name...");
+			});
+	
+			$('#password').focusin(function() {
+				$(this).val("");
+			});
+	
+			$('#password').focusout(function() {
+				if($(this).val() == "")
+					$(this).val("Password...");
+			});
+		});
+	}
+	
+	login();
+	
+	$('#loginContainer form').submit(function(){
+		$.post('/login.json', function(data){
+			if(data.success)
+				window.location.reload("");
+			else
+				$('#loginContainer').html(data)
+		})
+	})
+	
 	if($.cookie('currentStyle')=='Orange'){
 		$('link').attr("href",'CSS/product.css');
 		$('#styleSelect option[value=1]').html('Orange');
@@ -80,11 +114,19 @@ $(document).ready(function(){
 	$.get('/products.json', function(productsData){
 		$.each(productsData,function(i, v){
 			if(v.title == $.cookie('productPage')){
+<<<<<<< HEAD
 				
 				product_id = v.id;
 				
 				
 				
+=======
+				
+				product_id = v.id;
+				
+				
+				
+>>>>>>> upstream/master
 					$.get('/comments.json?product_id='+product_id, function(commentsData){
 						if(commentsData.length != 0)
 						$.each(commentsData,function(t, k){

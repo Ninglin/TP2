@@ -6,7 +6,10 @@
 	<head>
 	<title> FooBar Online Store </title>
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "application" %>
+  	<%= javascript_include_tag "/JS/jquery-1.6.4.min.js" %>
+  	<%= javascript_include_tag "/JS/index.js" %>
+  	<%= javascript_include_tag "/JS/jquery.cookie.js" %>
+  	<%= javascript_include_tag "/JS/jquery.dataTables.min.js" %>
   	<%= csrf_meta_tags %>
 	<!--<link rel="stylesheet" type="text/css" href="/FoobarStore/app/assets/stylesheets/index.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="CSS/indexPrint.css" media="print" />
@@ -22,9 +25,9 @@
 					<a href="index.html"></a>
 				</div>
 				<div id="loginContainer">
-					<form action="index.html">
+					<form action="/login">
 						<input class="userName" name="user" type="text" value="User Name..."/><br>
-						<input class="userPass" name="pass" type="text" value="Password..."/>
+						<input class="userPass" name="pass" type="password" value="Password..."/>
 						<input class="logInButton" type="submit" value=""/>
 					</form>	
 				</div>
@@ -51,9 +54,9 @@
 						</ul>
 					</li>
 				</ul>
-<!-- 				<% if @admPermission %> -->
-					<%= yield(:admin) %>
-	<!-- 				<% end %> -->
+				<% if Account.is_admin? %>
+					<%= yield :admin %>
+				<% end %>
 			</div>
 			
 			<div class="mainApp">

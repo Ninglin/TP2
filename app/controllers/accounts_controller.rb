@@ -26,16 +26,13 @@ class AccountsController < ApplicationController
   # GET /accounts/new.json
   def new
     @account = Account.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @account }
-    end
+    render 'new'
   end
 
   # GET /accounts/1/edit
   def edit
     @account = Account.find(params[:id])
+    
   end
 
   # POST /accounts
@@ -43,13 +40,11 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
 
-    respond_to do |format|
-      if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render json: @account, status: :created, location: @account }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+    if @account.save
+      redirect_to 'index.html'
+    else
+      respond_to do |format|
+        format.html { render 'new'}
       end
     end
   end
@@ -81,4 +76,5 @@ class AccountsController < ApplicationController
       format.json { head :ok }
     end
   end
+end
 end

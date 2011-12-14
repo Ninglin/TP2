@@ -53,7 +53,7 @@ body
 	display: inline;
 }
 
-#header #loginContainer .userPass{
+#header #loginContainer #password{
 	border-radius: 1em 1em 1em 1em;
 	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
 	color: gray;
@@ -66,6 +66,10 @@ body
 	border: 0;
 	width: 87px;
 	height: 28px;
+}
+
+#header #loginContainer form, #header #loginContainer form div{
+	display: inline;
 }
 
 #header #loginContainer .logInButtonPressed{
