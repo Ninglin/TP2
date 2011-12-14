@@ -1,5 +1,39 @@
 $(document).ready(function(){
 
+	function login(){
+		$.get('/login.html', function(data) {
+			$('#loginContainer').html(data);
+			$('.userName').focusin(function() {
+				$(this).val("");
+			});
+	
+			$('.userName').focusout(function() {
+				if($(this).val() == "")
+					$(this).val("User Name...");
+			});
+	
+			$('#password').focusin(function() {
+				$(this).val("");
+			});
+	
+			$('#password').focusout(function() {
+				if($(this).val() == "")
+					$(this).val("Password...");
+			});
+		});
+	}
+	
+	login();
+	
+	$('#loginContainer form').submit(function(){
+		$.post('/login.json', function(data){
+			if(data.success)
+				window.location.reload("");
+			else
+				$('#loginContainer').html(data)
+		})
+	})
+	
 	if($.cookie('currentStyle')=='Orange'){
 		$('link').attr("href",'CSS/product.css');
 		$('#styleSelect option[value=1]').html('Orange');
@@ -75,38 +109,88 @@ $(document).ready(function(){
 		$(this).addClass('logInButton');
 	});
 	
-	$.get('products.xml', function(products){
-		
-		var productNumber = 0;
-		$(products).find('product').each(function(){
-			var name = $(this).find('name:first').text();
-			var description = $(this).find('description').text();
-			var category = $(this).find('category').text();
-			var imageurl = $(this).find('main_photo').text();
-			var price = $(this).find('price').text();
-			if((name == $.cookie('productPage')) && (productNumber==0)){
-				productNumber++;
+	var product_id;
+	
+	$.get('/products.json', function(productsData){
+		$.each(productsData,function(i, v){
+			if(v.title == $.cookie('productPage')){
 				
-				$('#navContainer').append('<a href="index.html">Home</a> > <a href="categorie.html">'+category+'</a> > <a href="#">'+name+'</a>');
-				$.cookie('catPage', category);
-				$('#mainContainer .name').append(name); 
-				$('#imageContainer').append('<img src="'+ imageurl +'"/>');
-				$('#descriptionContainer').append('<p>'+description+'</p>');
-				$('#imageList').append('<img src="'+ imageurl + '"/>');
+				product_id = v.id;
 				
-				$(this).find('related_list').each(function(){
-					$(this).find('related').each(function(){
-						var name = $(this).find('name').text();
-						var photo = $(this).find('photo').text();
-						$('#relatedContainer').append('<p>'+name+'</p>');
+				
+				
+					$.get('/comments.json?product_id='+product_id, function(commentsData){
+						if(commentsData.length != 0)
+						$.each(commentsData,function(t, k){
+							alert('entrou no commentListContainer');
+							$('#commentListContainer').append('<p>'+k.user+'</p>');
+							$('#commentListContainer').append('<p>'+k.content+'</p>');
+						});
+						else
+							$('#commentListContainer').append('<p>There are no comments for this product</p>');
+					});
+					
+					//duvida
+					$.get('/review/show.json', function(reviewData){
+						alert('xxx');
+						if(reviewData !=null)
+							$('#reviewsContainer').append(reviewData);
+						else
+							$('#reviewsContainer').append('<p>There are no reviews for this product</p>');
+					});
+				var category;
+				var name = v.title;
+				var description = v.description;
+				var allimgsurl = new Array();
+				$.get('/categories.json', function(categoryData){
+					$.each(categoryData,function(j, w){
+							if(v.category_id == w.id)
+								category = w.name;
+					});
+					$.get('/images.json?product_id='+v.id, function(imageData){
+						for (var i=0; i < imageData.length; i++) {
+							allimgsurl.push(imageData[i].url);
+						};
+												
+						$.get('/related_products.json?product_id='+v.id, function(relatedData){
+							
+							$.each(relatedData,function(h, x){
 						
-						//duvida: estes related nao podem ter hiperligacao pois nao existe referencia a eles no xml como sendo produtos
-						$('#relatedContainer').append('<img alt="'+name+'" src="'+photo+'"/>');
+								var related_name = x.name;
+								var related_id;
+								
+								$.get('/products.json', function(productsData){
+									$.each(productsData,function(i, v){
+										if(v.title == related_name){
+											related_id = v.id;
+											$.get('/images.json?product_id='+related_id, function(relatedImageData){
+												$('#relatedContainer').append('<p>'+related_name+'</p>');
+												$('#relatedContainer').append('<img alt="'+related_name+'" src="'+relatedImageData[0].url+'"/>');	
+												
+										
+											});
+										}
+										
+										$('#navContainer').html('<a href="index.html">Home</a> > <a href="categorie.html">'+category+'</a> > <a href="#">'+name+'</a>');
+										$('#imageContainer').html('<img src="'+ allimgsurl[0] +'"/>');
+										$('#mainContainer .name').html(name);
+										$('#descriptionContainer').html('<p>'+description+'</p>');
+										$('#imageList').html('<img src="'+ allimgsurl + '"/>');
+										$.cookie('catPage', category);
+							
+									});
+								});
+							});
+						});
 					});
 				});
 			}
 		});
+	
 	});
+	
+	
+	
 	
 	$("#searchBar form").submit(function() {
 		var procura = $("#search").val();

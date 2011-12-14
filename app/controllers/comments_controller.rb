@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
-
+   @comments = Comment.where(:product_id => params[:product_id])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comments }
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   # GET /comments/1.json
   def show
     @comment = Comment.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @comment }

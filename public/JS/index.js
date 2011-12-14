@@ -1,6 +1,40 @@
-$(document).ready(function(){
-	
+$(document).ready(function() {
+
 	$('#submenu').hide();
+	
+	function login(){
+		$.get('/login.html', function(data) {
+			$('#loginContainer').html(data);
+			$('.userName').focusin(function() {
+				$(this).val("");
+			});
+	
+			$('.userName').focusout(function() {
+				if($(this).val() == "")
+					$(this).val("User Name...");
+			});
+	
+			$('#password').focusin(function() {
+				$(this).val("");
+			});
+	
+			$('#password').focusout(function() {
+				if($(this).val() == "")
+					$(this).val("Password...");
+			});
+		});
+	}
+	
+	login();
+	
+	$('#loginContainer form').submit(function(){
+		$.post('/login.json', function(data){
+			if(data.success)
+				window.location.reload("");
+			else
+				$('#loginContainer').html(data)
+		})
+	})
 	
 	if($.cookie('currentStyle')=='Orange'){
 		$('link').attr("href",'CSS/index.css');
@@ -104,26 +138,22 @@ $(document).ready(function(){
 	
 			$("#submenu li").click(function(){
 				$.cookie('catPage', $(this).text());
+				$.cookie('searchCookie', null);
 			});
 			
 			var lastView;
 			$.get('/categories/'+v.id+'.json', function(productData){
-				$.each(productData,function(j, d){
-					var name = d.title;
-					var imageurl = 0;
-					if(name == $.cookie('productPage')){
-						$.get('/images.json?product_id='+d.id, function(imageData){
-							var imageurl = imageData[0].url;
-							lastView = '<a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a>';
+						$.each(productData,function(j, d){
+							if(d.title == $.cookie('productPage'))
+								$.get('/images.json?product_id='+d.id, function(imageData){
+										lastView = '<a href="product.html"><img class="photo" alt="' + d.title + '" src="'+imageData[0].url+'"/></a>';
+						
+									$('#lastViewContainer div').html(lastView);
+									$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
+								});
+								
 						});
-					}
-					
-					$('#lastViewContainer div').html(lastView);
-					$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
-		
-				});
-		
-			});	
+				});	
 		});
 	});
 	

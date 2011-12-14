@@ -1,0 +1,18 @@
+<% if @current_user%>
+    <p>Logged in as <%= current_user.username %>.
+    <%= link_to "Log out", log_out_path %></p>
+<% else %>
+
+	<% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
+	<%= form_tag sessions_path do %>
+	
+	    <%= text_field_tag :username, params[:username], :class => 'userName', :value => 'Username...' %>
+	
+	    <%= password_field_tag :password, :class => 'userPass' %>
+	
+		<%= submit_tag "", :class => 'logInButton' %> 
+	<% end %>
+	<%= button_to "", new_account_path, :class => 'registerButton'%>
+<% end %>

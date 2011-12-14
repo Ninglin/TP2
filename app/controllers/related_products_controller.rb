@@ -3,10 +3,10 @@ class RelatedProductsController < ApplicationController
   # GET /related_products.json
   def index
     @related_products = RelatedProduct.all
-
+    @specific_products = RelatedProduct.where(:product_id => params[:product_id])
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @related_products }
+      format.json { render json: @specific_products }
     end
   end
 

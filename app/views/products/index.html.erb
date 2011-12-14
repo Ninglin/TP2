@@ -1,24 +1,23 @@
-<div class="welcomeBoxProduct">
-	<h1>Foobar Online Store Management Area</h1>
-</div>
-<div id="menuBoxProduct">
-	<ul id="menu">
-		<li class="product">
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li class="popupmenuprod">
 			<a href="/products">Manage Products</a>
-			<ul>
-				<li><%= link_to 'New Product', new_product_path %></li>
+			<ul id="submenuprod">
+				<li class="init"><%= link_to 'New Product', new_product_path %></li>
 			</ul>
+			</li>
 		</li>
-		<li class="category">
+		<li>
 			<a href="/categories">Manage Categories</a>
 		</li>
-		<li class="logout">
+		<li>
 			<a href="/logout">Log out</a>
 		</li>
 	</ul>
 </div>
-
-<div id="contentBoxProduct">
+<% end %>
 	<h1>Product Management</h1>
 	
 	<table >
@@ -77,4 +76,3 @@
 	  </tr>
 	<% end %>
 	</table>
-</div>

@@ -1,55 +1,9 @@
-<h1>Listing Product</h1>
 
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @product.category_id %>
-</p>
-<p>
-	<strong>Related Products:</strong>
-</p>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Image</th>
-	</tr>
-
-<% @related.each do |related| %>
-	<tr>
-		<td><%= related.name %></td>
-		<td><%= image_tag(related.image_url)%></td>
-	</tr>
-<% end %>
-
-</table>
-<dl>
 <% @comments.each do |comment| %>
-	<dt> <%= comment.user %></dt>
-	<dd> <%= strip_tags(comment.content)%></dd>
+	<p> <%= comment.user + ' said:' %><br />
+	 <%= strip_tags(comment.content)%></p>
 <% end %>
-</dl>
+
 <% if admPermission %>
 	<%= link_to 'Edit', edit_product_path(@product) %> 
 	<%= link_to 'Back', products_path %>
