@@ -62,24 +62,14 @@ class ProductsController < ApplicationController
     @images = Image.find_all_by_product_id(params[:id])
     
     respond_to do |format|
+      
       if @product.update_attributes(params[:product])
+        Image.create(:url => params[:newimage], :product_id => params[:id])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :ok }
       else
-        if Image.find_by_url(product[images]).nil?
-          Image.create(:url => product[images], :product_id => params[:id])
-          if @product.update_attributes(params[:product])
-            format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-            format.json { head :ok }
-          else
-            format.html { render action: "edit" }
-            format.json { render json: @product.errors, status: :unprocessable_entity }
-          end
-        else
-          notice = "Image already exists!"
-          format.html { render action: "edit" }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
-        end
+        format.html { render action: "edit" }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end

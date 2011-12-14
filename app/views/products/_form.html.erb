@@ -26,22 +26,14 @@
   </div>
   
   <div class="field">
-  	<%= f.label "Listing all images for product"%>
-  	<ul>	
+  	<%= f.label "Listing all images for product"%><br />	
 	  <% @images.each do |image| %>
-	  	<li class="thumb"><%= image_tag(image.url)%></li>
+	  	<%= image_tag(image.url)%>
 	  <% end %> 		
-  	</ul>
   </div>
-  
   <div class="field">
-     <%= f.label "Add a local Image to product" %><br />
-   	 <%= f.file_field :images%>
-  </div>
-  <h1>OR</h1>
-  <div class="field">
-  	<%= f.label "Add a remote Image to product" %><br />
-    <%= f.text_field :images, :include_id => false, :value => "" %>
+  		<%= f.label "Add a remote Image to product" %><br />
+    	<%= text_field_tag 'newimage' %>
   </div>
   
   <div class="actions">

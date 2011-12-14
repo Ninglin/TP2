@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	$('#submenu').hide();
+	$('#submenuprod').hide();
 	
 	function login(){
 		$.get('/login.html', function(data) {
@@ -129,6 +130,16 @@ $(document).ready(function() {
 	$('.popupmenu').mouseleave(function(){
 		jQuery.fx.interval= 20;
 		$('#submenu').slideUp();
+	});
+	
+	$('.popupmenuprod').mouseenter(function(){
+		jQuery.fx.interval= 20;
+		$('#submenuprod').slideDown();
+	});
+	
+	$('.popupmenuprod').mouseleave(function(){
+		jQuery.fx.interval= 20;
+		$('#submenuprod').slideUp();
 	});
 	
 	$.get('/categories.json', function(data){

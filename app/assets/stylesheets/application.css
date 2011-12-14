@@ -13,6 +13,18 @@
 	width: 61em;
 }
 
+.log_msg{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size: 11pt;
+	color: #ffffff;
+}
+
+.log_msg a:hover{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;
+	color: #ff6600;
+}
+
 .mainApp
 {
 	border-radius: 1em 1em 1em 1em;

@@ -1,36 +1,91 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.welcomeBoxProduct{
-  border-radius: 1em 1em 0em 0em;
-  h1{
-    text-align: center;
-    font-family: "Myriad Pro";
-    font-size: 20pt;
-    color: #CD3700;
-    
+#prodList{
+  padding: 0px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid black;
+  .related_drop {
+    width: 150px;
+    border: 0px none;
   }
-  margin:0;
-  background-color: #000000;
-  width: 1331px;;
-  height: 100px;
-  border: 1px solid #CD3700;
+}
+
+#prodList tr, td, th{
+  border: 1px solid black;
+}
+
+#navlist .popupmenuprod
+{
+  background-color:#ffffff;
+}
+
+#submenuprod
+{
+  border-radius:0em 0em 1em 1em;
+  margin: 0;
+  background-color: #FFFFFF;
+  width: 8.9em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border-right: 1px solid #ff6600;
+  border-bottom: 1px solid #ff6600;
+}
+
+#submenuprod li
+{
+  border-radius: 1em 1em 1em 1em;
+  list-style: none;
+  background-color:#CCCCCC;
+  text-align: left;
+  margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+#submenuprod li a
+{
+  border-radius: 1em 1em 1em 1em;
+  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+  font-size:9pt;  
+  display: block;
+  text-decoration: none;
+  padding: .25em;
+  border: 1px solid #000000;
+}
+
+#submenuprod a:link, a:visited
+{
+  color: #000000;
+}
+
+#submenuprod a:hover, a:Active
+{
+  color:#000000;
+}
+
+#submenuprod a:hover
+{
+  background-color: #ff6600;
+  border: 1px solid #000000;
+}
+
+.preview{
+  padding: 0;
 }
 
 .list_image{
-  width:  150px;
-  height: 150px;
+  width:  100px;
+  height: 100px;
 }
 
 .list_description dl dt{
   font-weight: bold;
   font-size: 14pt;
-  width: 500px;
+  width: 300px;
 }
 
 .list_description dl dd{
   font-size: 12pt;
-  width: 500px;
+  width: 300px;
 }
 
 .list_line_odd{
@@ -41,113 +96,20 @@
   background-color: rgb(200,200,200);
 }
 
-.related_thumb{
-  width: 100px;
-  heigth: 100px;
+.list_actions{
+  text-align:center;
 }
 
 .related {
-  float: left;
-}
-
-#menuBoxProduct
-{
-  border-radius: 0em 0em 0em 1em;
-  background-color: #000000;
-  float: left;
-  width: 200px;
-  height:100%;
-  border-top:0;
-  border-left: 1px solid #cd3700;
-  border-right: 1px solid #cd3700;
-  border-bottom: 1px solid #cd3700;
-  margin-bottom: 0.5em;
-}
-
-#menu
-{
-  margin: 0;
-  width: 11em;
-  height: 100%;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  margin-bottom: 0.5em;
-} 
-
-#menu .product{
-  border-radius: 1em 1em 1em 1em;
-  list-style: none;
-  background-color:#cd3700;
-  text-align: left;
-  margin: 0.5em 0.5em 0.5em 0.5em;
-  background-color: #000000;
   border: 0;
+  float: left;
+  width: 150px;
 }
 
-#menu .logout{
-  border-radius: 1em 1em 1em 1em;
-  list-style: none;
-  background-color:#cd3700;
-  text-align: left;
-  margin: 0.5em 0.5em 0.5em 0.5em;
-}
-
-#menu .category
-{
-  border-radius: 1em 1em 1em 1em;
-  list-style: none;
-  background-color:#cd3700;
-  text-align: left;
-  margin: 0.5em 0.5em 0.5em 0.5em;
-}
-
-#menu li a
-{
-  border-radius: 1em 1em 1em 1em;
-  background-color: #cd3700;
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size:11pt; 
-  display: block;
-  text-decoration: none;
-  padding: .25em;
-  border: 1px solid #000000;
-}
-
-#menu a:link, a:visited
-{
-  color: #000000;
-}
-
-#menu a:hover, a:Active
-{
-  color:#000000;
-}
-
-#menu a:hover
-{
-  background-color: #ff6600;
-  border: 1px solid #000000;
-}
-
-.mainApp {
-  height: 100%;
-  #contentBoxProduct{
-    h1{
-      color: #cd3700;
-    }
-    table{
-      .preview{
-        width:150px;
-      }
-    }
-    border-radius:0em 0em 1em 0em;
-    width:1114px;
-    margin: 0px;
-    float:right;
-    background-color: #000000;
-    font-family: "Myriad Pro";
-    padding-left:1em;
-    padding-top: 1em;
-    border-bottom: 1px solid #cd3700;
-    border-right: 1px solid #cd3700;
+.show_image{
+  img{
+    border-radius: 1em 1em 1em 1em;
+    border: 1px solid #ff6600;
   }
+  text-align: center;
 }

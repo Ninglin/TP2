@@ -1,33 +1,32 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<p>
-  <b>Title:</b>
+<p class="show_image">
+<%= image_tag (Image.find_by_product_id(@product.id).url) %>
+<p class="show_title">
+  <b>Title:&nbsp;</b>
   <%= @product.title %>
 </p>
 
-<p>
-  <b>Description:</b>
+<p class="show_desc">
+  <b>Description:&nbsp;</b>
   <%= @product.description %>
 </p>
 
-<p>
-  <b>Image url:</b>
-  <%= Image.find_by_product_id(@product.id).url %>
+  
+
+<p class="show_price">
+  <b>Price:&nbsp;</b>
+  <%= number_to_currency(@product.price, :unit => "&euro;") %>
 </p>
 
 <p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @product.category_id %>
+  <b>Category:&nbsp;</b>
+  <%= Category.find(@product.category_id).name %>
 </p>
 <p>
 	<strong>Related Products:</strong>
 </p>
+<%= link_to image_tag('/Images/icons/resultset_previous.png'), products_path %>  &nbsp;&nbsp;
+<%= link_to image_tag('/Images/icons/pencil.png'), edit_product_path(@product) %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
