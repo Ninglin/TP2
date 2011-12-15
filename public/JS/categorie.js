@@ -134,6 +134,7 @@ $(document).ready(function(){
 	});
 	
 	var lastView;
+	var images = new Array();
 	$.get('/categories.json', function(categoryData){
 
 		$.each(categoryData,function(i, v){
@@ -206,10 +207,34 @@ $(document).ready(function(){
 										$.cookie('productPage', $(this).attr('alt'));
 								});
 							});
+							
+							$.get('/highlights.json', function(highlightsData){
+									$.each(highlightsData,function(o, p){
+											if(p.category_id == v.id){
+												$.get('/images.json?product_id='+p.product_id, function(himageData){
+													var name;
+													$.get('/products.json', function(productsData){
+															$.each(productsData,function(i, k){
+																if(p.product_id == k.id){
+																	name = k.title;
+																	images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
+																
+																}
+															});
+													});
+													$('.scrollable').html('<p id=load>loading highlights...');
+													$('.scrollable').append('<div class=items> </div>');
+												});
+											}
+										});
+								});
+							
+							
+							
 						}
 					});
 				});
-				
+			
 			}
 			
 			//listar a tabela de categoria
@@ -219,9 +244,7 @@ $(document).ready(function(){
 					$.get('/categories/'+v.id+'.json', function(productData){		
 						
 						$.each(productData,function(j, d){
-							
-								// $('#productTable .del').remove();
-				
+
 								var name = d.title;
 								var description = d.description;
 								var price = (d.price).substring(0,5);
@@ -230,15 +253,35 @@ $(document).ready(function(){
 									var imageurl = imageData[0].url;
 									$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
 								
+
+								
 									$("#productTable tr td a img").click(function(){
-										// alert($(this).attr('alt'));
 										$.cookie('productPage', $(this).attr('alt'));
 									});
-								
+					
 								});
-								// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ imageurl + '"/></a>');
 								
-							
+								
+								$.get('/highlights.json', function(highlightsData){
+									$.each(highlightsData,function(o, p){
+											if(p.category_id == v.id){
+												$.get('/images.json?product_id='+p.product_id, function(himageData){
+													var name;
+													$.get('/products.json', function(productsData){
+															$.each(productsData,function(i, k){
+																if(p.product_id == k.id){
+																	name = k.title;
+																	images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
+																
+																}
+															});
+													});
+													$('.scrollable').html('<p id=load>loading highlights...');
+													$('.scrollable').append('<div class=items> </div>');
+												});
+											}
+										});
+								});
 						});
 				});
 			} //acaba listar a tabela
@@ -246,6 +289,54 @@ $(document).ready(function(){
 		});
 		
 	});
+	
+	
+	function highlights(){
+		for(var i = 0; i < images.length/3; i++){
+			$('.scrollable .items').append('<div id="div'+i+'"></div>');
+			for(var j = 0; j < 3; j++){
+				$('.scrollable .items #div'+i+'').append(images[i+j]);
+			}
+			i+=2;
+		}
+		$(".scrollable .items div a img").click(function(){
+			// alert($(this).attr('alt'));
+			$.cookie('productPage', $(this).attr('alt'));
+		});
+	}
+	$('.scrollable').ajaxStop(function(){
+		$('#load').remove();
+		highlights();
+		
+		$(function(){
+			$('.scrollable').scrollable({circular:true});
+		});
+ 	});
+ 	
+	$(".scrollable .items div a img").click(function(){
+		// alert('aaa');
+		$.cookie('productPage', $(this).attr('alt'));
+	});
+	
+	$('.prev').mouseup(function(){
+		$(this).removeClass('prevPressed');
+		$(this).addClass('prev');
+		
+		$(".scrollable .items div a img").click(function(){
+			$.cookie('productPage', $(this).attr('alt'));
+		});
+	});
+	
+	$('.next').mouseup(function(){
+		$(this).removeClass('nextPressed');
+		$(this).addClass('next');
+		
+		
+		$(".scrollable .items div a img").click(function(){
+			$.cookie('productPage', $(this).attr('alt'));
+		});
+	});
+	
 	
 		//caso seja submetido o search na pagina de categorias
 		$("#searchBar form").submit(function() {

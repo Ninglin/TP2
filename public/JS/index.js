@@ -163,7 +163,7 @@ $(document).ready(function() {
 			$.get('/images.json?product_id='+p.product_id, function(himageData){
 				var name;
 				$.get('/products.json', function(productsData){
-						var x = $.each(productsData,function(i, k){
+						$.each(productsData,function(i, k){
 							if(p.product_id == k.id){
 								name = k.title;
 								images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
