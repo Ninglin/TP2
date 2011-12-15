@@ -157,7 +157,7 @@ $(document).ready(function(){
 								$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
 
 								$("#lastViewContainer a img").click(function(){
-									alert($(this).attr('alt'));
+									// alert($(this).attr('alt'));
 									$.cookie('productPage', $(this).attr('alt'));
 								});
 							});
@@ -210,7 +210,7 @@ $(document).ready(function(){
 								$('#productTable').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
 								$("#productTable tr td a img").click(function(){
 										// alert($(this).attr('alt'));
-										alert('bbbb');
+										// alert('bbbb');
 										$.cookie('productPage', $(this).attr('alt'));
 								});
 							});
@@ -235,9 +235,6 @@ $(document).ready(function(){
 											}
 										});
 								});
-							
-							
-							
 						}
 					});
 				});
@@ -263,7 +260,7 @@ $(document).ready(function(){
 
 								
 									$("#productTable tr td a img").click(function(){
-										alert($(this).attr('alt'));
+										// alert($(this).attr('alt'));
 										$.cookie('productPage', $(this).attr('alt'));
 									});
 					
@@ -280,10 +277,10 @@ $(document).ready(function(){
 																if(p.product_id == k.id){
 																	name = k.title;
 																	images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
-																$(".scrollable .items div a img").click(function(){
-																	alert('ddddd');
-																	$.cookie('productPage', $(this).attr('alt'));
-																});
+																	$(".scrollable .items div a img").click(function(){
+																		// alert('ddddd');
+																		$.cookie('productPage', $(this).attr('alt'));
+																	});
 																}
 															});
 													});
@@ -311,7 +308,7 @@ $(document).ready(function(){
 			i+=2;
 		}
 		$(".scrollable .items div a img").click(function(){
-			alert($(this).attr('alt'));
+			// alert($(this).attr('alt'));
 			$.cookie('productPage', $(this).attr('alt'));
 		});
 	}
@@ -325,7 +322,7 @@ $(document).ready(function(){
  	});
  	
 	$(".scrollable .items div a img").click(function(){
-		alert('aaa');
+		// alert('aaa');
 		$.cookie('productPage', $(this).attr('alt'));
 	});
 	
@@ -334,7 +331,7 @@ $(document).ready(function(){
 		$(this).addClass('prev');
 		
 		$(".scrollable .items div a img").click(function(){
-			alert('fffff');
+			// alert('fffff');
 			$.cookie('productPage', $(this).attr('alt'));
 		});
 	});
@@ -345,7 +342,7 @@ $(document).ready(function(){
 		
 		
 		$(".scrollable .items div a img").click(function(){
-			alert('ggggg');
+			// alert('ggggg');
 			$.cookie('productPage', $(this).attr('alt'));
 		});
 	});

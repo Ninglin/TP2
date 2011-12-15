@@ -120,7 +120,6 @@ $(document).ready(function(){
 					$.get('/comments.json?product_id='+product_id, function(commentsData){
 						if(commentsData.length != 0)
 						$.each(commentsData,function(t, k){
-							// alert('entrou no commentListContainer');
 							$('#commentListContainer').append('<p>'+k.user+'</p>');
 							$('#commentListContainer').append('<p>'+k.content+'</p>');
 						});
@@ -130,7 +129,6 @@ $(document).ready(function(){
 					
 					//duvida
 					$.get('/review/show.json', function(reviewData){
-						// alert('xxx');
 						if(reviewData !=null)
 							$('#reviewsContainer').append(reviewData);
 						else
@@ -149,11 +147,10 @@ $(document).ready(function(){
 						for (var i=0; i < imageData.length; i++) {
 							allimgsurl.push(imageData[i].url);
 						};
-												
+						
 						$.get('/related_products.json?product_id='+v.id, function(relatedData){
 							
 							$.each(relatedData,function(h, x){
-						
 								var related_name = x.name;
 								var related_id;
 								
@@ -162,23 +159,25 @@ $(document).ready(function(){
 										if(v.title == related_name){
 											related_id = v.id;
 											$.get('/images.json?product_id='+related_id, function(relatedImageData){
+												alert('77777');
 												$('#relatedContainer').append('<p>'+related_name+'</p>');
 												$('#relatedContainer').append('<img alt="'+related_name+'" src="'+relatedImageData[0].url+'"/>');	
 												
 										
 											});
 										}
-										
-										$('#navContainer').html('<a href="index.html">Home</a> > <a href="categorie.html">'+category+'</a> > <a href="#">'+name+'</a>');
-										$('#imageContainer').html('<img src="'+ allimgsurl[0] +'"/>');
-										$('#mainContainer .name').html(name);
-										$('#descriptionContainer').html('<p>'+description+'</p>');
-										$('#imageList').html('<img src="'+ allimgsurl + '"/>');
-										$.cookie('catPage', category);
 							
 									});
 								});
 							});
+							if(v.title == $.cookie('productPage')){
+								$('#navContainer').html('<a href="index.html">Home</a> > <a href="categorie.html">'+category+'</a> > <a href="#">'+name+'</a>');
+								$('#imageContainer').html('<img src="'+ allimgsurl[0] +'"/>');
+								$('#mainContainer .name').html(name);
+								$('#descriptionContainer').html('<p>'+description+'</p>');
+								$('#imageList').html('<img src="'+ allimgsurl + '"/>');
+								$.cookie('catPage', category);
+							}
 						});
 					});
 				});
@@ -186,8 +185,6 @@ $(document).ready(function(){
 		});
 	
 	});
-	
-	
 	
 	
 	$("#searchBar form").submit(function() {
