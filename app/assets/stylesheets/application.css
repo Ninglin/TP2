@@ -39,7 +39,7 @@
 	color: #ffffff;
 }
 
-.log_msg a:hover{
+.log_msg .log_out {
 	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
 	font-size:10pt;
 	color: #ff6600;

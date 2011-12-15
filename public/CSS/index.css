@@ -93,6 +93,19 @@ body
 	display: inline;				
 }
 
+.log_msg{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size: 11pt;
+	color: #ffffff;
+}
+
+.log_msg .log_out {
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;
+	color: #ff6600;
+}
+
+
 #header .searchButton
 {
 	background-image: url("../Images/searchButton.png");

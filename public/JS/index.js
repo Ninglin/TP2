@@ -141,7 +141,8 @@ $(document).ready(function() {
 		jQuery.fx.interval= 20;
 		$('#submenuprod').slideUp();
 	});
-	
+
+	var images = new Array();
 	$.get('/categories.json', function(data){
 		// alert('entrou 1');
 		$.each(data,function(i, v){
@@ -151,6 +152,27 @@ $(document).ready(function() {
 				$.cookie('catPage', $(this).text());
 				$.cookie('searchCookie', null);
 			});
+			
+			$.get('/highlights.json', function(highlightsData){
+				$.each(highlightsData,function(o, p){
+					$.get('/images.json?product_id='+p.product_id, function(himageData){
+						var name;
+						$.get('/products.json', function(productsData){
+								$.each(productsData,function(i, k){
+									if(p.product_id == k.id){
+										name = k.title;
+										images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');		
+									}
+								});
+						});
+						$('.scrollable').html('<p id=load>Loading Highlights...');
+						$('.scrollable').append('<div class=items> </div>');
+					});
+					
+				});
+			});
+			
+			
 			
 			var lastView;
 			$.get('/categories/'+v.id+'.json', function(productData){
@@ -169,30 +191,25 @@ $(document).ready(function() {
 		});
 	});
 
-	var images = new Array();
-	$.get('/highlights.json', function(highlightsData){
-		$.each(highlightsData,function(o, p){
-			$.get('/images.json?product_id='+p.product_id, function(himageData){
-				var name;
-				$.get('/products.json', function(productsData){
-
-						$.each(productsData,function(i, k){
-
-							if(p.product_id == k.id){
-								name = k.title;
-								images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
-							
-							}
-						});
-				});
-
-				$('.scrollable').html('<p id=load>Loading Highlights...');
-
-				$('.scrollable').append('<div class=items> </div>');
-			});
-			
-		});
-	});
+	// var images = new Array();
+	// $.get('/highlights.json', function(highlightsData){
+		// $.each(highlightsData,function(o, p){
+			// $.get('/images.json?product_id='+p.product_id, function(himageData){
+				// var name;
+				// $.get('/products.json', function(productsData){
+						// $.each(productsData,function(i, k){
+							// if(p.product_id == k.id){
+								// name = k.title;
+								// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');		
+							// }
+						// });
+				// });
+				// $('.scrollable').html('<p id=load>Loading Highlights...');
+				// $('.scrollable').append('<div class=items> </div>');
+			// });
+// 			
+		// });
+	// });
 				
 	function highlights(){
 		for(var i = 0; i < images.length/3; i++){
