@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @related = RelatedProduct.find_all_by_product_id(params[:id])
-    
+    @images = Image.find_all_by_product_id(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -59,7 +59,6 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-    @images = Image.find_all_by_product_id(params[:id])
     
     respond_to do |format|
       

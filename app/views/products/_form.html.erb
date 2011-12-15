@@ -1,4 +1,4 @@
-<%= form_for(@product, :html => {:multipart => true}) do |f| %>
+<%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -26,15 +26,20 @@
   </div>
   
   <div class="field">
-  	<%= f.label "Listing all images for product"%><br />	
-	  <% @images.each do |image| %>
-	  	<%= image_tag(image.url)%>
-	  <% end %> 		
-  </div>
-  <div class="field">
-  		<%= f.label "Add a remote Image to product" %><br />
+  		<%= f.label "Add an image to product" %><br />
     	<%= text_field_tag 'newimage' %>
   </div>
+  <% if params[:category_id].present? %>
+  <div class="field">
+  		<%= f.label "Category" %><br />
+    	<%= f.text_field :category_id, :value => params[:category_id], :readonly => true%>
+  </div>
+  <% else %>
+  	<div class="field">
+  		<%= f.label "Category" %><br />
+    	<%= text_field_tag :category_id %>
+  	</div>
+  <% end %>
   
   <div class="actions">
     <%= f.submit %>

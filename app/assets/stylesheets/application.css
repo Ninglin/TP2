@@ -13,6 +13,26 @@
 	width: 61em;
 }
 
+#header #loginContainer .userName{
+	border-radius: 1em 1em 1em 1em;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color:gray;
+	padding-left: 5px;
+	margin-bottom: 3px;
+}
+
+#header #loginContainer form, #header #loginContainer form div{
+	display: inline;
+}
+
+#header #loginContainer #password{
+	border-radius: 1em 1em 1em 1em;
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	color: gray;
+	padding-left: 5px;
+	margin-bottom: 3px;
+}
+
 .log_msg{
 	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
 	font-size: 11pt;

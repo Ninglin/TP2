@@ -8,9 +8,10 @@
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "application" %>
   	<%= javascript_include_tag "/JS/jquery-1.6.4.min.js" %>
-  	<%= javascript_include_tag "/JS/index.js" %>
+  	<%= javascript_include_tag "/JS/jquery.tools.min.js" %>
   	<%= javascript_include_tag "/JS/jquery.cookie.js" %>
   	<%= javascript_include_tag "/JS/jquery.dataTables.min.js" %>
+  	<%= javascript_include_tag "/JS/index.js" %>
   	<%= csrf_meta_tags %>
 	<!--<link rel="stylesheet" type="text/css" href="/FoobarStore/app/assets/stylesheets/index.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="CSS/indexPrint.css" media="print" />
@@ -46,10 +47,10 @@
 				<ul id="navlist">
 					<li class="menu"><p> Menu </p></li>
 					<li>
-						<a id="current" href="#">Home</a>
+						<a id="current" href="/index.html">Home</a>
 					</li>
 					<li class = "popupmenu">
-						<a href="#">Categories</a>
+						<a href="/categorie.html">Categories</a>
 						<ul id="submenu">
 							<li class="init"> </li>
 						</ul>

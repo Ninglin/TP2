@@ -117,12 +117,10 @@ $(document).ready(function(){
 				
 				product_id = v.id;
 				
-				
-				
 					$.get('/comments.json?product_id='+product_id, function(commentsData){
 						if(commentsData.length != 0)
 						$.each(commentsData,function(t, k){
-							alert('entrou no commentListContainer');
+							// alert('entrou no commentListContainer');
 							$('#commentListContainer').append('<p>'+k.user+'</p>');
 							$('#commentListContainer').append('<p>'+k.content+'</p>');
 						});
@@ -132,7 +130,7 @@ $(document).ready(function(){
 					
 					//duvida
 					$.get('/review/show.json', function(reviewData){
-						alert('xxx');
+						// alert('xxx');
 						if(reviewData !=null)
 							$('#reviewsContainer').append(reviewData);
 						else

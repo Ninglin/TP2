@@ -36,6 +36,7 @@ FoobarStore::Application.routes.draw do
   post "/login" => "Sessions#create"
   match "/accounts/new" => "Account#new"
   match "/images" => "Image#index"
+  match "/highlights" => "Highlight#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

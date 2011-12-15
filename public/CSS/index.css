@@ -49,7 +49,7 @@ body
 	margin-bottom: 3px;
 }
 
-#header #loginContainer form{
+#header #loginContainer form, #header #loginContainer form div{
 	display: inline;
 }
 
@@ -68,15 +68,29 @@ body
 	height: 28px;
 }
 
-#header #loginContainer form, #header #loginContainer form div{
-	display: inline;
-}
-
 #header #loginContainer .logInButtonPressed{
 	background-image: url("../Images/logInButton(pressed).png");
 	border: 0;
 	width: 87px;
 	height: 28px;
+}
+
+#header #loginContainer .registerButton{
+	background-image: url("../Images/registerButton.png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header #loginContainer .registerButtonPressed{
+	background-image: url("../Images/registerButton(pressed).png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header #loginContainer form, #header #loginContainer form div{
+	display: inline;				
 }
 
 #header .searchButton
