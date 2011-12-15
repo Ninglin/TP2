@@ -16,11 +16,9 @@
 <% @accounts.each do |account| %>
   <tr>
     <td><%= account.username %></td>
-    <td><%= account.password %></td>
     <td><%= account.firstname %></td>
     <td><%= account.lastname %></td>
     <td><%= account.address %></td>
-    <td><%= account.cart_id %></td>
     <td><%= link_to 'Show', account %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %></td>
     <td><%= link_to 'Destroy', account, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,33 +1,55 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<p>
-  <b>Title:</b>
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+	</ul>
+</div>
+<% end %>
+<div class="show_image">
+  <h4>Listing all images for product</h4>	
+	  <% @images.each do |image| %>
+	  	<%= image_tag(image.url)%>
+	  <% end %> 		
+</div>
+<p class="show_title">
+  <b>Title:&nbsp;</b>
   <%= @product.title %>
 </p>
 
-<p>
-  <b>Description:</b>
+<p class="show_desc">
+  <b>Description:&nbsp;</b>
   <%= @product.description %>
 </p>
 
-<p>
-  <b>Image url:</b>
-  <%= Image.find_by_product_id(@product.id).url %>
+  
+
+<p class="show_price">
+  <b>Price:&nbsp;</b>
+  <%= number_to_currency(@product.price, :unit => "&euro;") %>
 </p>
 
 <p>
-  <b>Price:</b>
-  <%= @product.price %>
+  <b>Category:&nbsp;</b>
+  <%= Category.find(@product.category_id).name %>
 </p>
 
-<p>
-  <b>Category:</b>
-  <%= @product.category_id %>
-</p>
 <p>
 	<strong>Related Products:</strong>
+	<% if !@related.empty? %>
+			
+	<% else %>
+		<h4>This product has no related products</h4>
+	<% end %>
 </p>
+<%= link_to image_tag('/Images/icons/resultset_previous.png'), products_path %>  &nbsp;&nbsp;
+<%= link_to image_tag('/Images/icons/pencil.png'), edit_product_path(@product) %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

@@ -1,6 +1,20 @@
-<h1>Editing product</h1>
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+	</ul>
+</div>
+<% end %>
+<h1>Editing Product</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to image_tag('/Images/icons/resultset_previous.png'), products_path %> &nbsp;&nbsp;
+<%= link_to image_tag('/Images/icons/zoom.png'), @product %>
+

@@ -26,7 +26,6 @@ class AccountsController < ApplicationController
   # GET /accounts/new.json
   def new
     @account = Account.new
-    render 'new'
   end
 
   # GET /accounts/1/edit
@@ -40,11 +39,13 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
 
-    if @account.save
-      redirect_to 'index.html'
-    else
-      respond_to do |format|
-        format.html { render 'new'}
+    respond_to do |format|
+      if @account.save
+        format.html { redirect_to '/index.html', notice: 'User Registered!' }
+        format.json { render json: @account, status: :created, location: @category }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,5 +77,5 @@ class AccountsController < ApplicationController
       format.json { head :ok }
     end
   end
-end
+
 end

@@ -12,67 +12,44 @@
 		<li>
 			<a href="/categories">Manage Categories</a>
 		</li>
-		<li>
-			<a href="/logout">Log out</a>
-		</li>
 	</ul>
 </div>
 <% end %>
-	<h1>Product Management</h1>
-	
-	<table >
-		<tr class="list_line_even">
-			<th>Preview Product</th>
-			<th>Product Details</th>
-			<th>Related Products</th>
-			<th>Available Actions</th>
-		</tr>
-	<% @products.each do |product| %>
-	
-	  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-	  	<% begin
-			image =  Image.find_by_product_id(product.id).url
-		rescue ActiveRecord::RecordNotFound%>
-	  	<td>Unexisting Preview</td>
-	  	<% else %>
-	  	<td class="preview"><%= image_tag(image, :class => 'list_image') %></td>
-	  	<% end %>
-	    <td class='list_description'>
-	    	<dl>
-	    		<dt><%= product.title %></dt>
-	    		<dd><%= truncate(strip_tags(product.description), :length => 300) %></dd>
-	    	</dl>
-		</td>
-		<td class="scroll">
-			<% if !product.related_products.empty? %>
-			<table class='related'>
-				<tr>
-					<th>Title</th>
-					<th>Thumbnail</th>
-				</tr>
-			<% product.related_products.each do |related| %>
-				<tr>
-					<td class="relName"><%= related.name %></td>
-					<% begin
-							image =  Image.find_by_product_id(Product.find_by_title(related.name).id).url
-					rescue ActiveRecord::RecordNotFound %>
-						<td> Thumbnail Unavailable</td>
-					<% else %>
-						<td class="thumbnail"><%= image_tag(image, :class => 'related_thumb')%></td>
-					<% end %>
-				</tr>		
-			<% end %>
-			</table>
-			<% else %>
-				<h4>This product has no related products</h4>
-			<% end %>
-		</td>
-	
-	    <td class="list_actions">
-	    	<%= link_to 'View Product', product %><br />
-	    	<%= link_to 'Edit Product', edit_product_path(product) %><br />
-	    	<%= link_to 'Remove Product', product, confirm: "Are you sure you want to delete #{product.title} from the store?", method: :delete %>
-		</td>
-	  </tr>
-	<% end %>
-	</table>
+<h1>Product Management</h1>
+
+<table id="prodList">
+	<tr class="list_line_even">
+		<th>Preview </th>
+		<th>Product Details</th>
+		<th>Related Products</th>
+		<th>Management</th>
+	</tr>
+<% @products.each do |product| %>
+
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  	<% if Image.find_by_product_id(product.id).nil?%>
+  		<td>Unexisting Preview</td>
+  	<% else %>
+  	<td class="preview"><%= image_tag(Image.find_by_product_id(product.id).url, :class => 'list_image') %></td>
+  	<% end %>
+    <td class='list_description'>
+    	<dl>
+    		<dt><%= product.title %></dt>
+    		<dd><%= truncate(strip_tags(product.description), :length => 80) %></dd>
+    	</dl>
+	</td>
+	<td class="related">
+		<% if !product.related_products.empty? %>
+			<%= select("related", "product_id", product.related_products.all.collect{|p|[p.name, p.id]}, {:prompt => 'Related Product list'}, :class => 'related_drop' )%>
+		<% else %>
+			<h4>This product has no related products</h4>
+		<% end %>
+	</td>
+    <td class="list_actions">
+    	<%= link_to image_tag('/Images/icons/zoom.png'), product %>
+    	<%= link_to image_tag('/Images/icons/pencil.png'), edit_product_path(product) %> 
+    	<%= link_to image_tag('/Images/icons/delete.png'), product, confirm: "Are you sure you want to delete #{product.title} from the store?", method: :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>

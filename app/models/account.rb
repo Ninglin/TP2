@@ -27,6 +27,14 @@ class Account < ActiveRecord::Base
     end
   end
   
+  def is_admin?
+    if :isAdmin
+      return true
+    else
+      return false
+    end
+  end
+  
   def self.is_admin?
     if :isAdmin
       return true

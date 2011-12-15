@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	$('#submenu').hide();
+	$('#submenuprod').hide();
 	
 	function login(){
 		$.get('/login.html', function(data) {
@@ -131,6 +132,16 @@ $(document).ready(function() {
 		$('#submenu').slideUp();
 	});
 	
+	$('.popupmenuprod').mouseenter(function(){
+		jQuery.fx.interval= 20;
+		$('#submenuprod').slideDown();
+	});
+	
+	$('.popupmenuprod').mouseleave(function(){
+		jQuery.fx.interval= 20;
+		$('#submenuprod').slideUp();
+	});
+	
 	$.get('/categories.json', function(data){
 		// alert('entrou 1');
 		$.each(data,function(i, v){
@@ -157,13 +168,16 @@ $(document).ready(function() {
 			
 		});
 	});
+
 	var images = new Array();
 	$.get('/highlights.json', function(highlightsData){
 		$.each(highlightsData,function(o, p){
 			$.get('/images.json?product_id='+p.product_id, function(himageData){
 				var name;
 				$.get('/products.json', function(productsData){
+
 						$.each(productsData,function(i, k){
+
 							if(p.product_id == k.id){
 								name = k.title;
 								images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
@@ -171,7 +185,9 @@ $(document).ready(function() {
 							}
 						});
 				});
-				$('.scrollable').html('<p id=load>loading scroll...');
+
+				$('.scrollable').html('<p id=load>Loading Highlights...');
+
 				$('.scrollable').append('<div class=items> </div>');
 			});
 			

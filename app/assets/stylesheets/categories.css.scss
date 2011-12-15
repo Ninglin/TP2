@@ -1,3 +1,90 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.cat_list{
+  padding: 0px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid black;
+}
+
+#submenuprod
+{
+  border-radius:0em 0em 1em 1em;
+  margin: 0;
+  background-color: #FFFFFF;
+  width: 8.9em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border-right: 1px solid #ff6600;
+  border-bottom: 1px solid #ff6600;
+}
+
+#submenuprod li
+{
+  border-radius: 1em 1em 1em 1em;
+  list-style: none;
+  background-color:#CCCCCC;
+  text-align: left;
+  margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+#submenuprod li a
+{
+  border-radius: 1em 1em 1em 1em;
+  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+  font-size:9pt;  
+  display: block;
+  text-decoration: none;
+  padding: .25em;
+  border: 1px solid #000000;
+}
+
+#submenuprod a:link, a:visited
+{
+  color: #000000;
+}
+
+#submenuprod a:hover, a:Active
+{
+  color:#000000;
+}
+
+#submenuprod a:hover
+{
+  background-color: #ff6600;
+  border: 1px solid #000000;
+}
+
+#prodList{
+  padding: 0px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid black;
+  .related_drop {
+    width: 150px;
+    border: 0px none;
+  }
+}
+
+#prodList tr, td, th{
+  border: 1px solid black;
+}
+
+.preview{
+  padding: 0;
+}
+
+.list_actions{
+  text-align:center;
+}
+
+.list_description dl dt{
+  font-weight: bold;
+  font-size: 14pt;
+  width: 300px;
+}
+
+.list_preview{
+  width: 100px;
+  height:100px;
+}
