@@ -27,12 +27,14 @@ $(document).ready(function(){
 	
 	$('#loginContainer form').submit(function(){
 		$.post('/login.json', function(data){
-			if(data.success)
+			if(data.success){
 				window.location.reload("");
-			else
-				$('#loginContainer').html(data)
-		})
-	})
+			}
+			else{
+				$('#loginContainer').html(data);
+			}
+		});
+	});
 	
 	if($.cookie('currentStyle')=='Orange'){
 		$('link').attr("href",'CSS/product.css');

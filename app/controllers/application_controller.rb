@@ -13,15 +13,15 @@ class ApplicationController < ActionController::Base
       end
     end
     
-    private
-    
-  	def  current_cart 
+  	def current_cart 
   		Cart.find(session[:cart_id])
   	rescue ActiveRecord::RecordNotFound
   		cart = Cart.create(:user_id => session[:user_id])
   		session[:cart_id] = cart.id
   		cart
   	end
+    
+    private
     
     def current_user
       @current_user ||= Account.find(session[:user_id]) if session[:user_id]

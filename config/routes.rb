@@ -27,7 +27,7 @@ FoobarStore::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "login" => "sessions#new", :as => "log_in"
   match "/register" => "Account#new", :as => "register"
-  match "/cart" => "Cart#show"
+  match "/cart/:id" => "Cart#show"
   match "/category/:id" => "Category#show"
   # match "/product/:id" => "Review#show"
   match "/admin" => "Admin#index"
@@ -37,6 +37,7 @@ FoobarStore::Application.routes.draw do
   match "/accounts/new" => "Account#new"
   match "/images" => "Image#index"
   match "/highlights" => "Highlight#index"
+  #match "/addToCart" => "line_item#create"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

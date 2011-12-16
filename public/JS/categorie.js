@@ -26,16 +26,18 @@ $(document).ready(function(){
 	}
 	
 	login();
-	
 	$('#loginContainer form').submit(function(){
 		$.post('/login.json', function(data){
-			alert('ssss');
-			if(data.success)
+			if(data.success){
 				window.location.reload("");
-			else
-				$('#loginContainer').html(data)
+			}
+			else{
+				$('#loginContainer').html(data);
+			}
 		});
 	});
+	
+	
 	
 	if($.cookie('currentStyle')=='Orange'){
 		$('link').attr("href",'CSS/categorie.css');
@@ -208,7 +210,7 @@ $(document).ready(function(){
 								var desctab = description.substring(0,300)+'...';						
 								var imageurl = imageData[0].url;
 								var price = (d.price).substring(0,5);
-								$('#productTable').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
+								$('#productTable').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;&nbsp;&nbsp;<a href="/line_items?product_id='+d.id+'" data-method="create"><img src="/Images/icons/cart_put.png"/></a></td></tr>');
 								$("#productTable tr td a img").click(function(){
 										// alert($(this).attr('alt'));
 										// alert('bbbb');
@@ -256,8 +258,7 @@ $(document).ready(function(){
 								var desctab = description.substring(0,300)+'...';
 								$.get('/images.json?product_id='+d.id, function(imageData){
 									var imageurl = imageData[0].url;
-									$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'	&#8364;</td></tr>');
-								
+									$('#productTable tbody').append('<tr><td>"'+name+'"</td><td><a href="product.html"><img class="photo" alt="' + name + '" src="'+imageurl+'"/></a></td><td><div class="description">'+desctab+'</div></td><td class="price">'+price+'&#8364;&nbsp;&nbsp;<a href="/line_items?product_id='+d.id+'" data-method="create"><img src="/Images/icons/cart_put.png"/></a></td></tr>');
 
 								
 									$("#productTable tr td a img").click(function(){

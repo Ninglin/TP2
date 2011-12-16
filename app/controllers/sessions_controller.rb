@@ -9,9 +9,7 @@ class SessionsController < ApplicationController
     user = Account.authenticate(params[:username], params[:password])
     if user
       session[:user_id] = user.id
-      if user.is_admin != 1
-        current_cart
-      end
+      current_cart
     end
      
     respond_to do |format|
