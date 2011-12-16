@@ -52,7 +52,6 @@
 		<% end %>
 	</td>
     <td class="list_actions">
-    	<%= link_to image_tag('/Images/icons/cart_put.png'), line_items_path(:product_id => product), :method => 'create'%>
     	<%= link_to image_tag('/Images/icons/zoom.png'), product %>
     	<%= link_to image_tag('/Images/icons/pencil.png'), edit_product_path(product) %> 
     	<%= link_to image_tag('/Images/icons/delete.png'), product, confirm: "Are you sure you want to delete #{product.title} from the store?", method: :delete %>

@@ -53,6 +53,20 @@
 	color: #ff6600;
 }
 
+#header #loginContainer .registerButton{
+	background-image: url("../Images/registerButton.png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
+#header #loginContainer .registerButtonPressed{
+	background-image: url("../Images/registerButton(pressed).png");
+	border: 0;
+	width: 87px;
+	height: 28px;
+}
+
 .log_msg{
 	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
 	font-size: 11pt;
