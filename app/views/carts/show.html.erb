@@ -1,40 +1,40 @@
-
-		<% if notice %>
-			<p id="notice"><%= notice %></p>
-		<% end %>
-		
-		<h3> Your Cart</h3>
-		<table>
-			<tr>
-				<th>Your Order</th>
-				<th>Unit Price</th>
-				<th>Total Price</th>
-			</tr>
-		<% total = 0 %>
-		<% @cart.line_items.each do |item|%>
-			<tr>
-				<td>
-					<%= item.quantity %> &times; <%= item.product.title %>
-				</td>
-				<td>
-					<%= number_to_currency(item.product.price, :unit => "&euro;") %>
-				</td>
-				<td>
-					<%= 
-					aux = item.quantity*item.product.price
-					number_to_currency(aux, :unit => "&euro;")
-					%>
-				</td>
-			</tr>
-			<% total += aux%>
-		<% end %>
-			<tr>
-				<td></td>
-				<td><strong>Total:</strong></td>
-				<td><%= number_to_currency(total, :unit => "&euro;")%></td>
-			</tr>
-		</table>
-		<% if @admPermission %>
-			<%= link_to 'Edit', edit_cart_path(@cart) %> |
-			<%= link_to 'Back', carts_path %>
-		<% end %>
+<% if !@current_user.nil?%>
+<% if notice %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+<p>Continue Shopping? Click <%= link_to 'here', request.referer%></p>
+<h3> Your Cart</h3>
+<table>
+	<tr>
+		<th>Your Order</th>
+		<th>Unit Price</th>
+		<th>Total Price</th>
+	</tr>
+<% total = 0 %>
+<% @cart.line_items.each do |item|%>
+	<tr>
+		<td>
+			<%= item.quantity %> &times; <%= item.product.title %>
+		</td>
+		<td>
+			<%= number_to_currency(item.product.price, :unit => "&euro;") %>
+		</td>
+		<td>
+			<%= 
+			aux = item.quantity*item.product.price
+			number_to_currency(aux, :unit => "&euro;")
+			%>
+		</td>
+	</tr>
+	<% total += aux%>
+<% end %>
+	<tr>
+		<td></td>
+		<td><strong>Total:</strong></td>
+		<td><%= number_to_currency(total, :unit => "&euro;")%></td>
+	</tr>
+</table>
+<% else %>
+ <h1>Denied!</h1>
+ <p>Only registered users can shop! Click <%= link_to 'here', '/index'%></here>%=> to return to the index</p>
+<% end %>

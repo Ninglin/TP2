@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
 	  @products = Product.find_all_by_category_id(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json:  @products }
+      format.json { render json:  @products.map {|p| [p.category_id, p.images, p]}}
     end
   end
 

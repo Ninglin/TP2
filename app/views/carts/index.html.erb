@@ -1,3 +1,4 @@
+<% if !@current_user.nil? && @current_user.is_admin?%>
 <h1>Listing carts</h1>
 
 <table>
@@ -8,14 +9,22 @@
   </tr>
 
 <% @carts.each do |cart| %>
-  <tr>
-    <td><%= link_to 'Show', cart %></td>
-    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-    <td><%= link_to 'Destroy', cart, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+	<tr>
+	  	<td><%= cart.id%></td>
+	  	<td><%= cart.user_id%></td>
+	    <td>
+	    	<%= link_to 'Show', cart %>
+	   		<%= link_to 'Edit', edit_cart_path(cart) %>
+	   		<%= link_to 'Destroy', cart, confirm: 'Are you sure?', method: :delete %></td>
+  	</tr>
 <% end %>
+
 </table>
 
 <br />
 
 <%= link_to 'New Cart', new_cart_path %>
+<% else %>
+<h1>Denied!</h1>
+ <p>You don't have permission to view this page! Click <%= link_to 'here', '/index'%> to return to the index</p>
+<% end %>

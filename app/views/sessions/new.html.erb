@@ -5,13 +5,9 @@
     	<%= link_to "Go to Management Area", '/admin', :class => 'log_out'%>
     <% else %>
     	<%= link_to "My Account", '/accounts/'+@current_user.id.to_s, :class => 'log_out'%>
-    	<%= link_to image_tag('/Images/icons/cart.png'), '/cart/'+session[:cart_id].to_s %>
+    	<%= link_to image_tag('/Images/icons/cart.png'), '/carts/'+session[:cart_id].to_s %>
     <% end %>
 <% else %>
-
-	<% flash.each do |name, msg| %>
-	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
 	<%= form_tag sessions_path do %>
 	
 	    <%= text_field_tag :username, params[:username], :class => 'userName', :value => 'Username...' %>

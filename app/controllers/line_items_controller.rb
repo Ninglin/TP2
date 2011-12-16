@@ -39,17 +39,24 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @cart = current_cart
-    product = Product.find(params[:product_id])
-  	@line_item = @cart.add_product(product.id)
-	
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
-        format.json { render json: @line_item, status: :created, location: @line_item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+    if !@current_user.nil?
+      @cart = current_cart
+      product = Product.find(params[:product_id])
+    	@line_item = @cart.add_product(product.id)
+    	
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to @line_item.cart, notice: 'Product added to cart!' }
+          format.json { render json: @line_item, status: :created, location: @line_item }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+          format.html { redirect_to '/carts/', notice: 'Must be logged in to purchase!' }
+          format.json { render json: {:failure => true}, status: :unprocessable_entity, location: @line_item }
       end
     end
   end

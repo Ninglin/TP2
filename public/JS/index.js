@@ -30,12 +30,14 @@ $(document).ready(function() {
 	
 	$('#loginContainer form').submit(function(){
 		$.post('/login.json', function(data){
-			if(data.success)
+			if(data.success){
 				window.location.reload("");
-			else
-				$('#loginContainer').html(data)
-		})
-	})
+			}
+			else{
+				$('#loginContainer').html(data);
+			}
+		});
+	});
 	
 	if($.cookie('currentStyle')=='Orange'){
 		$('link').attr("href",'CSS/index.css');
@@ -190,26 +192,6 @@ $(document).ready(function() {
 			
 		});
 	});
-
-	// var images = new Array();
-	// $.get('/highlights.json', function(highlightsData){
-		// $.each(highlightsData,function(o, p){
-			// $.get('/images.json?product_id='+p.product_id, function(himageData){
-				// var name;
-				// $.get('/products.json', function(productsData){
-						// $.each(productsData,function(i, k){
-							// if(p.product_id == k.id){
-								// name = k.title;
-								// images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');		
-							// }
-						// });
-				// });
-				// $('.scrollable').html('<p id=load>Loading Highlights...');
-				// $('.scrollable').append('<div class=items> </div>');
-			// });
-// 			
-		// });
-	// });
 				
 	function highlights(){
 		for(var i = 0; i < images.length/3; i++){
