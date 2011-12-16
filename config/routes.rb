@@ -17,7 +17,7 @@ FoobarStore::Application.routes.draw do
 
   resources :carts
 
- # get "store/index"
+  get "store/index"
   resources :users
   
   resources :sessions
@@ -38,6 +38,9 @@ FoobarStore::Application.routes.draw do
   match "/images" => "Image#index"
   match "/highlights" => "Highlight#index"
   match "/csrftag" => "Application#csrf"
+  # root :to => "/index.html.erb", :as => "index"
+  
+  root :to => 'store#index', :as => 'store'
   #match "/addToCart" => "line_item#create"
 
   # The priority is based upon order of creation:

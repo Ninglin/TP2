@@ -178,22 +178,22 @@ $(document).ready(function() {
 			
 			
 			
-			var lastView;
-			$.get('/categories/'+v.id+'.json', function(productData){
-				// alert('entrou 4');
-				$.each(productData,function(j, d){
-					if(d.title == $.cookie('productPage'))
-						$.get('/images.json?product_id='+d.id, function(imageData){
-							// alert('entrou 5');
-								lastView = '<a href="product.html"><img class="photo" alt="' + d.title + '" src="'+imageData[0].url+'"/></a>';
-				
-							$('#lastViewContainer div').html(lastView);
-							$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
-						});
-					
-				});
-			});
-			
+			// var lastView;
+			// $.get('/categories/'+v.id+'.json', function(productData){
+				// // alert('entrou 4');
+				// $.each(productData,function(j, d){
+					// if(d.title == $.cookie('productPage'))
+						// $.get('/images.json?product_id='+d.id, function(imageData){
+							// // alert('entrou 5');
+								// lastView = '<a href="product.html"><img class="photo" alt="' + d.title + '" src="'+imageData[0].url+'"/></a>';
+// 				
+							// $('#lastViewContainer div').html(lastView);
+							// $('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
+						// });
+// 					
+				// });
+			// });
+// 			
 		});
 	});
 

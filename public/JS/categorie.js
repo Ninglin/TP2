@@ -2,7 +2,8 @@ $(document).ready(function(){
 	
 	
 	jQuery.ajax({url:'/csrftag', success:function(data){
-		$('head').append(data);
+		tokentag = $('#tokentag').val();
+		
 	
 	}, async: false});
 	
@@ -144,6 +145,7 @@ $(document).ready(function(){
 	
 	var lastView;
 	var images = new Array();
+	var highexclusivity = new Array();
 	$.get('/categories.json', function(categoryData){
 
 		$.each(categoryData,function(i, v){
@@ -257,7 +259,7 @@ $(document).ready(function(){
 					$.get('/categories/'+v.id+'.json', function(productData){		
 						
 						$.each(productData,function(j, d){
-								// alert(d[2].title);
+								// alert(d[3][0].category_id);
 								var name = d[2].title;
 								// alert(name);
 								var description = d[2].description;
@@ -277,29 +279,43 @@ $(document).ready(function(){
 								// });
 								
 								
-								$.get('/highlights.json', function(highlightsData){
-									$.each(highlightsData,function(o, p){
-											if(p.category_id == v.id){
-												$.get('/images.json?product_id='+p.product_id, function(himageData){
-													var name;
-													$.get('/products.json', function(productsData){
-															$.each(productsData,function(i, k){
-																if(p.product_id == k.id){
-																	name = k.title;
-																	images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
-																	$(".scrollable .items div a img").click(function(){
-																		// alert('ddddd');
-																		$.cookie('productPage', $(this).attr('alt'));
-																	});
-																}
-															});
+								// $.get('/highlights.json', function(highlightsData){
+									// $.each(highlightsData,function(o, p){
+										
+										for(var i = 0; i<d[3].length; i++){
+										  
+											if(d[3][i].category_id == v.id){
+												// alert(i);
+												var high_id = d[3][i].product_id;
+												// alert(high_id)
+												if(jQuery.inArray(high_id, highexclusivity) == '-1'){
+													highexclusivity.push(high_id);
+																							
+													$.get('/images.json?product_id='+high_id, function(himageData){
+														
+														var name;
+														$.get('/products.json', function(productsData){
+																$.each(productsData,function(i, k){
+																	if(high_id== k.id){
+																		// alert("aaaa");
+																		name = k.title;
+																		
+																		images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');
+																		$(".scrollable .items div a img").click(function(){
+																			// alert('ddddd');
+																			$.cookie('productPage', $(this).attr('alt'));
+																		});
+																	}
+																});
+														});
+														$('.scrollable').html('<p id=load>loading like a boss...');
+														$('.scrollable').append('<div class=items> </div>');
 													});
-													$('.scrollable').html('<p id=load>loading highlights...');
-													$('.scrollable').append('<div class=items> </div>');
-												});
+												}
 											}
-										});
-								});
+										}
+										// });
+								// });
 						});
 				});
 			} //acaba listar a tabela
