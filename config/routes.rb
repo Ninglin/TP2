@@ -1,11 +1,6 @@
 FoobarStore::Application.routes.draw do
-  get "sessions/new"
-
-  get "image/new"
-  
+    
   resources :accounts
-
-  get "review/show"
 
   resources :comments
 
@@ -16,16 +11,17 @@ FoobarStore::Application.routes.draw do
   resources :line_items
 
   resources :carts
-
-  get "store/index"
-  
-  resources :users
   
   resources :sessions
   
   resources :products
   
-  root :to => "store#index", :as => 'store'
+  get "sessions/new"
+
+  get "image/new"
+  
+  get "review/show"
+  
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "login" => "sessions#new", :as => "log_in"
   match "/register" => "Account#new", :as => "register"

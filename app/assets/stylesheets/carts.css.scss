@@ -1,329 +1,41 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#wrap
-{
-  background-color: #CCCCCC;
-  margin: 0em 12em 0em 12em;
-  padding: 0px 0px 0px 0px;
-  width: 61em;
-}
-
-#header
-{
-  border-radius: 1em 1em 4em 4em;
-  background-color: #000000;
-  padding-top:0.5em;
-  margin-bottom: 0.5em;
-  border: 1px solid #ff6600;
-  height: 6em;
-  width: 61em;
-  margin-bottom:0.5em;
-}
-
-#logo a
-{
-  background-image: url("../Images/headerImg.png");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 454px;
-  height: 100px;
-  float:left;
-}
-
-#loginContainer{
-  width: 200px;
-  border-left: 1px solid #ff6600;
-  padding-top: 0.5em;
-  padding-left: 0.5em;
-  float: right;
-}
-
-#header #loginContainer .userName{
-  border-radius: 1em 1em 1em 1em;
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  color:gray;
-  padding-left: 5px;
-  margin-bottom: 3px;
-}
-
-#header #loginContainer .userPass{
-  border-radius: 1em 1em 1em 1em;
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  color: gray;
-  padding-left: 5px;
-  margin-bottom: 3px;
-}
-
-#header #loginContainer .logInButton{
-  background-image: url("../Images/logInButton.png");
-  border: 0;
-  width: 87px;
-  height: 28px;
-}
-
-#header #loginContainer .logInButtonPressed{
-  background-image: url("../Images/logInButton(pressed).png");
-  border: 0;
-  width: 87px;
-  height: 28px;
-}
-
-#header .searchButton
-{
-  background-image: url("../Images/searchButton.png");
-  border: 0;
-  width: 87px;
-  height: 28px;
-}
-
-#header .searchButtonPressed
-{
-  background-image: url("../Images/searchButton(pressed).png");
-  border: 0;
-  width: 87px;
-  height: 28px;
-}
-
-#header #searchBar
-{
-  padding-top: 0.5em;
-  float: right;
-}
-
-#header #searchBar #search
-{
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  color: gray;
-  border-radius: 1em 1em 1em 1em;
-  padding-left: 5px;
-  margin-bottom: 3px;
-  margin-right: 0.5em;
-}
-
-
-#navContainer 
-{
-  border-radius: 1em 1em 1em 1em;
-  background-color: #FFFFFF;
-  float: left;
-  width: 200px;
-  border: 1px solid #ff6600;
-  margin-bottom: 0.5em;
-}
-
-#navlist
-{
-  margin: 0;
-  width: 11em;
-  height: 100%;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  margin-bottom: 0.5em;
-}
-
-#navlist p
-{
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  color: #000000;
-  font-size: 14pt;
-  text-align: left;
-  border-bottom: 3px solid #ff6600; 
-}
-
-#navlist li
-{
-  border-radius: 1em 1em 0em 1em;
-  list-style: none;
-  background-color:#CCCCCC;
-  text-align: left;
-  margin: 0.5em 0.5em 0.5em 0.5em;
-}
-
-#navlist .menu
-{
-  background-color:#ffffff;
-}
-
-#navlist li a
-{
-  border-radius: 1em 1em 0em 1em;
-  background-color: #cccccc;
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size:11pt; 
-  display: block;
-  text-decoration: none;
-  padding: .25em;
-  border: 1px solid #000000;
-}
-
-#navlist a:link, a:visited
-{
-  color: #000000;
-}
-
-#navlist a:hover, a:Active
-{
-  color:#000000;
-}
-
-#navlist a:hover
-{
-  background-color: #ff6600;
-  border: 1px solid #000000;
-}
-
-#navlist .popupmenu
-{
-  background-color: #ffffff;
-}
-
-#submenu
-{
-  border-radius:0em 0em 1em 1em;
-  margin: 0;
-  background-color: #FFFFFF;
-  width: 8.9em;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  border-right: 1px solid #ff6600;
-  border-bottom: 1px solid #ff6600;
-  display: none;
-}
-
-#submenu li
-{
-  border-radius:1em 1em 1em 1em;
-  list-style: none;
-  background-color:#CCCCCC;
-  text-align: left;
-  margin: 0.5em 0.5em 0.5em 0.5em;
-}
-
-#submenu li a
-{
-  border-radius:1em 1em 1em 1em;
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size:9pt;  
-  display: block;
-  text-decoration: none;
-  padding: .25em;
-  border: 1px solid #000000;
-}
-
-#submenu a:link, a:visited
-{
-  color: #000000;
-}
-
-#submenu a:hover, a:Active
-{
-  color:#000000;
-}
-
-#submenu a:hover
-{
-  background-color: #ff6600;
-  border: 1px solid #000000;
-}
-
-
-#contentContainer
-{
-  border-radius: 1em 1em 1em 1em;
-  background-color: #FFFFFF;
-  width: 78%;
-  height: 100%;
-  border: 1px solid #ff6600;
-  float: right;
-  margin-bottom:0.5em;
-  margin-left:0.5em;
-}
-
-#contentContainer table
-{
-  width: 100%;
-  height: 500px;
-  text-align: center;
-  border-collapse: collapse;
-}
-#contentContainer tr, td
-{
-  width: 50%;
-  height:65%
-}
-
-#contentContainer .secondRow
-{
-  border-top: 1px solid #ff6600;
-}
-
-#contentContainer .download
-{
-  border-top: 1px solid #ff6600;
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size: 11pt;
-}
-
-.download a
-{
-  color: #ff6600;
-}
-
-#contentContainer p
-{
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size:12pt;
+.cart{
+  
+  th{
+    border-left:0;
+    border-top: 0;
+    border-bottom:0;
+    border-right: 2px solid black;
+  }
+    
+  .order{
+    border-left:0;
+    border-top: 0;
+    border-bottom:0;
+    border-right: 2px solid black;
+  }
+  .unit, .price{
+    border-right: 2px solid black;
+  }
+  
+  .total_label{
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+  }
+  
+  .total{
+    border-top: 2px solid black;
+  }
+  tr,td{
+    border:0;
+  }
+  border-left:0;
+  border-top: 0;
+  border-bottom:0;
+  border-right: 2px solid black;
   padding: 0px;
-  margin: 0px;
-}
-
-#contentContainer img
-{
-  height: 170px;
-  width: 190px;
-  padding-top: 70px;
-}
-
-#footer
-{
-  border-radius: 4em 4em 1em 1em;
-  background-color: #000000;
-  border: 1px solid #ff6600;
-  clear: both;
-  width: 59em;
-  height: 4em;
-  padding: 20px 20px 0px 10px;
-}
-
-#footer p
-{
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size:10pt;
-  color: #FFFFFF; 
-  float: left;
-}
-
-#footer a
-{
-  font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-  font-size:10pt; 
-  padding-left: 5px;
-  color: #ff6600;
-}
-
-#footer img
-{
-  float: right;
-  margin-top: 8px;
-}
-
-#styleSelect
-{
-  vertical-align: -12px;
-}
-
-#footer #pagStyle {
-  float: right;
-  margin-right: 25px;
-  width: 150px;
+  border-collapse: collapse;
+  border-spacing: 0;
 }

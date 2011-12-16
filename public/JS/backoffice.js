@@ -153,4 +153,75 @@ $(document).ready(function() {
 			});
 		});
 	});
+	
+	var images = new Array();
+	jQuery.ajax({ url:'/highlights.json', success:function(highlightsData){
+	// alert('888');
+	// $.get('/highlights.json', function(highlightsData){
+		$.each(highlightsData,function(o, p){
+			// $.get('/images.json?product_id='+p.product_id, function(himageData){
+				
+				jQuery.ajax({url:'/images.json?product_id='+p.product_id, success:function(himageData){
+									
+				var name;
+				$.get('/products.json', function(productsData){
+						$.each(productsData,function(i, k){
+							if(p.product_id == k.id){
+								name = k.title;
+								images.push('<a href="product.html"><img class="highlighted" alt="' + name + '" src="'+ himageData[0].url + '"/></a>');		
+							}
+						});
+				});
+				$('.scrollable').html('<p id=load>Loading Highlights...');
+				$('.scrollable').append('<div class=items> </div>');
+			},async:false});
+		});
+		}, async:false
+	});
+	function highlights(){
+		for(var i = 0; i < images.length/3; i++){
+			$('.scrollable .items').append('<div id="div'+i+'"></div>');
+			for(var j = 0; j < 3; j++){
+				$('.scrollable .items #div'+i+'').append(images[i+j]);
+			}
+			i+=2;
+		}
+		$(".scrollable .items div a img").click(function(){
+			// alert($(this).attr('alt'));
+			$.cookie('productPage', $(this).attr('alt'));
+		});
+	}
+	$('.scrollable').ajaxStop(function(){
+		// alert(images);
+		$('#load').remove();
+		highlights();
+		
+		$(function(){
+			$('.scrollable').scrollable({circular:true});
+		});
+ 	});
+ 	
+	$(".scrollable .items div a img").click(function(){
+		// alert('aaa');
+		$.cookie('productPage', $(this).attr('alt'));
+	});
+	
+	$('.prev').mouseup(function(){
+		$(this).removeClass('prevPressed');
+		$(this).addClass('prev');
+		
+		$(".scrollable .items div a img").click(function(){
+			$.cookie('productPage', $(this).attr('alt'));
+		});
+	});
+	
+	$('.next').mouseup(function(){
+		$(this).removeClass('nextPressed');
+		$(this).addClass('next');
+		
+		
+		$(".scrollable .items div a img").click(function(){
+			$.cookie('productPage', $(this).attr('alt'));
+		});
+	});
 });

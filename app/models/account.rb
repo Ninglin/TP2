@@ -4,7 +4,6 @@ class Account < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   
-  # validates :username, :password, :address, :firstname, :lastname, :presence => true
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :username
@@ -12,6 +11,7 @@ class Account < ActiveRecord::Base
   validates :username, :uniqueness => true
   
   has_one :cart
+  has_many :comments
   
   def self.authenticate(username, password)
     user = find_by_username(username)

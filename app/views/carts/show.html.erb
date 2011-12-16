@@ -4,34 +4,32 @@
 <% end %>
 <p>Continue Shopping? Click <%= link_to 'here', request.referer%></p>
 <h3> Your Cart</h3>
-<table>
+<table class="cart">
 	<tr>
-		<th>Your Order</th>
-		<th>Unit Price</th>
+		<th .class="order">Your Order</th>
+		<th .class="unit">Unit Price</th>
 		<th>Total Price</th>
 	</tr>
 <% total = 0 %>
 <% @cart.line_items.each do |item|%>
 	<tr>
-		<td>
+		<td class="order">
 			<%= item.quantity %> &times; <%= item.product.title %>
 		</td>
-		<td>
+		<td class="unit">
 			<%= number_to_currency(item.product.price, :unit => "&euro;") %>
 		</td>
-		<td>
-			<%= 
-			aux = item.quantity*item.product.price
-			number_to_currency(aux, :unit => "&euro;")
-			%>
+		<td .class="subtotal">
+			<%aux = item.quantity*item.product.price%>
+			<%=number_to_currency(aux, :unit => "&euro;")%>
 		</td>
 	</tr>
 	<% total += aux%>
 <% end %>
 	<tr>
 		<td></td>
-		<td><strong>Total:</strong></td>
-		<td><%= number_to_currency(total, :unit => "&euro;")%></td>
+		<td class="total_label"><strong>Total:</strong></td>
+		<td class="total"><%= number_to_currency(total, :unit => "&euro;")%></td>
 	</tr>
 </table>
 <% else %>

@@ -3,4 +3,5 @@ class Comment < ActiveRecord::Base
   validates :product_id, :uniqueness => true
   
   belongs_to :product
+  belongs_to :account
 end

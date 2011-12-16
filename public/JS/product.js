@@ -127,14 +127,18 @@ $(document).ready(function(){
 						});
 						else
 							$('#commentListContainer').append('<p>There are no comments for this product</p>');
+							
 					});
 					
 					//duvida
 					$.get('/review/show.json', function(reviewData){
-						if(reviewData !=null)
+						if(reviewData !=null){
 							$('#reviewsContainer').append(reviewData);
-						else
+							$('#reviewsContainer').append('<a href="/comments/new?product_id="'+product_id+'><img src="/Images/icons/comment_add.png"/>Add a comment</a>');
+						}else{
 							$('#reviewsContainer').append('<p>There are no reviews for this product</p>');
+							$('#reviewsContainer').append('<a href="/comments/new?product_id="'+product_id+'><img src="/Images/icons/comment_add.png"/>Add a comment</a>');
+						}
 					});
 				var category;
 				var name = v.title;
@@ -160,8 +164,7 @@ $(document).ready(function(){
 									$.each(productsData,function(i, v){
 										if(v.title == related_name){
 											related_id = v.id;
-											$.get('/images.json?product_id='+related_id, function(relatedImageData){
-												alert('77777');
+											$.get('/images.json?product_id='+related_id, function(relatedImageData){	
 												$('#relatedContainer').append('<p>'+related_name+'</p>');
 												$('#relatedContainer').append('<img alt="'+related_name+'" src="'+relatedImageData[0].url+'"/>');	
 												

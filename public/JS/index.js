@@ -39,34 +39,6 @@ $(document).ready(function() {
 		});
 	});
 	
-	if($.cookie('currentStyle')=='Orange'){
-		$('link').attr("href",'CSS/index.css');
-		$('#styleSelect option[value=1]').html('Orange');
-		$('#styleSelect option[value=2]').html('Bordeaux');
-		$('#styleSelect option[value=1]').attr("value", '1');
-		$('#styleSelect option[value=2]').attr("value", '2');
-	}
-	else{
-		if($.cookie('currentStyle')=='Bordeaux'){
-			$('link').attr("href",'CSS/style1Index.css');
-			$('#styleSelect option[value=1]').html('Bordeaux');
-			$('#styleSelect option[value=2]').html('Orange');
-			$('#styleSelect option[value=1]').attr("value", '2');
-			$('#styleSelect option[value=2]').attr("value", '1');
-		}
-	}
-			
-	$('#styleSelect').change(function(){
-		if($('#styleSelect').val()=='1'){
-			$('link').attr("href",'CSS/index.css');
-			$.cookie('currentStyle', 'Orange');
-		}else 
-			if($('#styleSelect').val() == '2'){
-				$('link').attr("href",'CSS/style1Index.css');
-				$.cookie('currentStyle', 'Bordeaux');
-			}
-	});
-	
 	$('.prev').mousedown(function(){
 		$(this).removeClass('prev');
 		$(this).addClass('prevPressed');
@@ -178,22 +150,22 @@ $(document).ready(function() {
 			
 			
 			
-			var lastView;
-			$.get('/categories/'+v.id+'.json', function(productData){
-				// alert('entrou 4');
-				$.each(productData,function(j, d){
-					if(d.title == $.cookie('productPage'))
-						$.get('/images.json?product_id='+d.id, function(imageData){
-							// alert('entrou 5');
-								lastView = '<a href="product.html"><img class="photo" alt="' + d.title + '" src="'+imageData[0].url+'"/></a>';
-				
-							$('#lastViewContainer div').html(lastView);
-							$('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
-						});
-					
-				});
-			});
-			
+			// var lastView;
+			// $.get('/categories/'+v.id+'.json', function(productData){
+				// // alert('entrou 4');
+				// $.each(productData,function(j, d){
+					// if(d.title == $.cookie('productPage'))
+						// $.get('/images.json?product_id='+d.id, function(imageData){
+							// // alert('entrou 5');
+								// lastView = '<a href="product.html"><img class="photo" alt="' + d.title + '" src="'+imageData[0].url+'"/></a>';
+// 				
+							// $('#lastViewContainer div').html(lastView);
+							// $('#lastViewContainer p:eq(1)').html(($('#lastViewContainer img').attr('alt')));
+						// });
+// 					
+				// });
+			// });
+// 			
 		});
 	});
 
