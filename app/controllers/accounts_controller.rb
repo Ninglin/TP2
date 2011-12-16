@@ -40,7 +40,7 @@ class AccountsController < ApplicationController
     @account = Account.new(params[:account])
 
     respond_to do |format|
-      @account.isAdmin = false
+      @account.is_admin = 0
       if @account.save
         format.html { redirect_to  @account, notice: 'User Registered!' }
         format.json { render json: @account, status: :created, location: @account }

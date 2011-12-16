@@ -1,5 +1,5 @@
 class AddIsAdminToAccounts < ActiveRecord::Migration
   def change
-    add_column :accounts, :isAdmin, :boolean, :default => 0
+    add_column :accounts, :is_admin, :integer
   end
 end

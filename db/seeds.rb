@@ -5311,7 +5311,7 @@ RelatedProduct.create(:product_id => Product.find_by_title(%{Applying UML and Pa
 			  :name => Product.find_by_title(%{Head First Design Patterns}).title )
 
 Account.delete_all
-Account.create(:username => "admin", :password =>"admin123", :firstname => "X", :lastname => "Y", :address => "Z", :password_hash => '$2a$10$IL019AhZdwiehK/qnDCfXej88tFuwbXl2Q2aRArl5Rtsp94oVcPYG', :password_salt => '$2a$10$IL019AhZdwiehK/qnDCfXe', :isAdmin => true)
+Account.create(:username => "admin", :password =>"admin123", :firstname => "X", :lastname => "Y", :address => "Z", :password_hash => '$2a$10$IL019AhZdwiehK/qnDCfXej88tFuwbXl2Q2aRArl5Rtsp94oVcPYG', :password_salt => '$2a$10$IL019AhZdwiehK/qnDCfXe', :is_admin =>  1)
 
 Highlight.delete_all
 Highlight.create(:product_id => Product.find_by_title('Code').id, :category_id => Category.find_by_name("Books").id)

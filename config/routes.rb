@@ -27,7 +27,7 @@ FoobarStore::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "login" => "sessions#new", :as => "log_in"
   match "/register" => "Account#new", :as => "register"
-
+  match "/cart" => "Cart#show"
   match "/category/:id" => "Category#show"
   # match "/product/:id" => "Review#show"
   match "/admin" => "Admin#index"

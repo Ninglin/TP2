@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
 
-  attr_accessible :username, :password, :password_confirmation,:firstname,:lastname,:address
+  attr_accessible :username, :password, :password_confirmation,:password_hash,:password_salt,:firstname,:lastname,:address,:is_admin
   attr_accessor :password
   before_save :encrypt_password
   
@@ -10,6 +10,8 @@ class Account < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
   validates :username, :uniqueness => true
+  
+  has_one :cart
   
   def self.authenticate(username, password)
     user = find_by_username(username)
@@ -29,7 +31,7 @@ class Account < ActiveRecord::Base
   end
   
   def is_admin?
-    if :isAdmin == 'true'
+    if self.is_admin == 1
       return true
     else
       return false

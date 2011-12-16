@@ -33,10 +33,12 @@
 <% @related_products.each do |related_product| %>
   <tr>
     <td><%= related_product.name %></td>
-    <td><%= Product.find(related_product.product_id).name %></td>
-    <td><%= link_to image_tag('/Images/icons/zoom.png'), related_product %></td>
-    <td><%= link_to image_tag('/Images/icons/pencil.png'), edit_related_product_path(related_product) %></td>
-    <td><%= link_to image_tag('/Images/icons/delete.png'), related_product, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= Product.find(related_product.product_id).title %></td>
+    <td>
+    	<%= link_to image_tag('/Images/icons/zoom.png'), related_product %>
+   		<%= link_to image_tag('/Images/icons/pencil.png'), edit_related_product_path(related_product) %>
+    	<%= link_to image_tag('/Images/icons/delete.png'), related_product, confirm: 'Are you sure?', method: :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
