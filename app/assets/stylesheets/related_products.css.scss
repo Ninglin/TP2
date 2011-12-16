@@ -1,3 +1,43 @@
 // Place all the styles related to the RelatedProducts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#relProdList{
+  padding: 0px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid black;
+  .related_drop {
+    width: 150px;
+    border: 0px none;
+  }
+}
+
+#relProdList tr, td, th{
+  border: 1px solid black;
+}
+
+.list_description {
+  font-weight: bold;
+  font-size: 14pt;
+  width: 300px;
+}
+
+.list_line_odd{
+  background-color: rgb(150,150,150);
+}
+
+.list_line_even{
+  background-color: rgb(200,200,200);
+}
+
+.list_actions{
+  text-align:center;
+  width: 20%;
+}
+
+.related {
+  border: 0;
+  float: left;
+  width: 150px;
+}
+
