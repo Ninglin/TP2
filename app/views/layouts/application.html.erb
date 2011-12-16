@@ -9,6 +9,7 @@
   	<%= javascript_include_tag "application" %>
   	<%= javascript_include_tag "/JS/jquery-1.6.4.min.js" %>
   	<%= javascript_include_tag "/JS/jquery.tools.min.js" %>
+  	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   	<%= javascript_include_tag "/JS/jquery.cookie.js" %>
   	<%= javascript_include_tag "/JS/jquery.dataTables.min.js" %>
   	<%= javascript_include_tag "/JS/backoffice.js" %>

@@ -238,7 +238,7 @@ $(document).ready(function() {
 		});
 	}
 	$('.scrollable').ajaxStop(function(){
-		alert(images);
+		// alert(images);
 		$('#load').remove();
 		highlights();
 		

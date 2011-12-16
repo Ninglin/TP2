@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
   		cart
   	end
     
+    def csrf
+      render 'layouts/csrf.js'
+    end
+    
+    
     private
     
     def current_user
