@@ -58,8 +58,10 @@
 						</ul>
 					</li>
 				</ul>
-				<% if Account.is_admin? %>
-					<%= yield :admin %>
+				<% if !@current_user.nil? %>
+					<% if @current_user.is_admin? %>
+						<%= yield :admin %>
+					<% end %>
 				<% end %>
 			</div>
 			

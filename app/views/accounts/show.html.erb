@@ -1,13 +1,31 @@
-<p id="notice"><%= notice %></p>
-
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+			
+		</li>
+		<li>
+			<a href="/related_products">Manage Related</a>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+		<li>
+			<a href="/accounts">Manage Accounts</a>
+		</li>
+	</ul>
+</div>
+<% end %>
+<% if notice %>
+<p id="notice">Your Account has been created!</p>
+<p>To return to the index page, click <%= link_to 'here', '/index'%></p>
+<p>To go to your account's profile, click <%= link_to 'here', request.fullpath%></p>
+<% else %>
 <p>
   <b>Username:</b>
   <%= @account.username %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @account.password %>
 </p>
 
 <p>
@@ -25,11 +43,7 @@
   <%= @account.address %>
 </p>
 
-<p>
-  <b>Cart:</b>
-  <%= @account.cart_id %>
-</p>
-
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
+<% end %>

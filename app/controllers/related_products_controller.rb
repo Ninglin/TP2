@@ -41,21 +41,10 @@ class RelatedProductsController < ApplicationController
   # POST /related_products.json
   def create
     @related_product = RelatedProduct.new(params[:related_product])
-    # begin
-      # @image = Image.find_by_product_id(@related_product.id)
-    # rescue ActiveRecord::RecordNotFound
-      # Image.new(:url => params[:image], :product_id => @related_product.id)
-    # else
-      # if @image.url == params[:image]
-        # Image.update(:url => params[:image], :product_id => @related_product.id)
-      # else
-        # Image.new(:url => params[:image], :product_id => @related_product.id)
-      # end
-#       
-    # end
+    
     respond_to do |format|
       if @related_product.save
-        format.html { redirect_to @related_product, notice: 'Related product was successfully created.' }
+        format.html { redirect_to '/products/'+@related_product.product_id.to_s, notice: 'Related product was successfully created.' }
         format.json { render json: @related_product, status: :created, location: @related_product }
       else
         format.html { render action: "new" }

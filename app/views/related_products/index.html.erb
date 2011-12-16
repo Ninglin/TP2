@@ -1,27 +1,46 @@
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+		</li>
+		<li class="popupmenuprod">
+			<a href="/related_products">Manage Related</a>
+			<ul id="submenuprod">
+				<li class="init"><%= link_to 'New Related', new_related_product_path %></li>
+			</ul>
+			</li>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+		<li>
+			<a href="/accounts">Manage Accounts</a>
+		</li>
+	</ul>
+</div>
+<% end %>
 <h1>Listing Related Products</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Image url</th>
-    <th>Product</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Related to</th>
+    <th>Management</th>
   </tr>
 
 <% @related_products.each do |related_product| %>
   <tr>
     <td><%= related_product.name %></td>
-    <td><%= image_tag(related_product.image_url) %></td>
-    <td><%= related_product.product_id %></td>
-    <td><%= link_to 'Show', related_product %></td>
-    <td><%= link_to 'Edit', edit_related_product_path(related_product) %></td>
-    <td><%= link_to 'Destroy', related_product, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= Product.find(related_product.product_id).name %></td>
+    <td><%= link_to image_tag('/Images/icons/zoom.png'), related_product %></td>
+    <td><%= link_to image_tag('/Images/icons/pencil.png'), edit_related_product_path(related_product) %></td>
+    <td><%= link_to image_tag('/Images/icons/delete.png'), related_product, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Related product', new_related_product_path %>
+

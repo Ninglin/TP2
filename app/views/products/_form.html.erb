@@ -31,16 +31,21 @@
   </div>
   <% if params[:category_id].present? %>
   <div class="field">
-  		<%= f.label "Category" %><br />
-    	<%= f.text_field :category_id, :value => params[:category_id], :readonly => true%>
+  		<%= f.label "" %><br />
+    	<%= f.hidden_field :category_id, :value => params[:category_id], :readonly => true%>
   </div>
   <% else %>
   	<div class="field">
   		<%= f.label "Category" %><br />
-    	<%= text_field_tag :category_id %>
+  		<% collection = Category.all.collect {|c|[c.name, c.id]} %>
+    	<%= f.select(:category_id, collection, {:prompt => 'Select Category'}) %>
   	</div>
   <% end %>
-  
+  <div class="field">
+  	<% if @product.id != nil %>
+  		<%= link_to "Add a Related Product", "/related_products/new?product_id="+@product.id.to_s%>
+  	<% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -13,6 +13,15 @@
 	width: 61em;
 }
 
+#loginContainer{
+	width: 200px;
+	border-left: 1px solid #ff6600;
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	margin-right: 2em;
+	float: right;
+}
+
 #header #loginContainer .userName{
 	border-radius: 1em 1em 1em 1em;
 	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
@@ -33,16 +42,21 @@
 	margin-bottom: 3px;
 }
 
+#header #loginContainer .log_out{
+	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
+	font-size:10pt;
+	color:#ff6600;
+}
+
+
+#header #loginContainer .log_out:hover{
+	color: #ff6600;
+}
+
 .log_msg{
 	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
 	font-size: 11pt;
 	color: #ffffff;
-}
-
-.log_msg .log_out {
-	font-family: "Myriad Pro", "Trebuchet MS", Arial, sans-serif;
-	font-size:10pt;
-	color: #ff6600;
 }
 
 .mainApp

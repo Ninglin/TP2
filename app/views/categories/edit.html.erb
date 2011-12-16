@@ -1,4 +1,23 @@
-<h1>Editing category</h1>
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+		</li>
+		<li>
+			<a href="/related_products">Manage Related</a>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+		<li>
+			<a href="/accounts">Manage Accounts</a>
+		</li>
+	</ul>
+</div>
+<% end %>
+<h1>Editing Category</h1>
 
 <%= render 'form' %>
 
