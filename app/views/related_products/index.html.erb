@@ -23,18 +23,21 @@
 <% end %>
 <h1>Listing Related Products</h1>
 
-<table>
-  <tr>
+<table id="relProdList">
+  <tr class="list_line_even">
     <th>Name</th>
     <th>Related to</th>
     <th>Management</th>
   </tr>
 
 <% @related_products.each do |related_product| %>
-  <tr>
-    <td><%= related_product.name %></td>
-    <td><%= Product.find(related_product.product_id).title %></td>
-    <td>
+
+ 
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+  	
+    <td class='list_description'><%= related_product.name %></td>
+    <td class="related"><%= Product.find(related_product.product_id).title %></td>
+    <td class="list_actions">
     	<%= link_to image_tag('/Images/icons/zoom.png'), related_product %>
    		<%= link_to image_tag('/Images/icons/pencil.png'), edit_related_product_path(related_product) %>
     	<%= link_to image_tag('/Images/icons/delete.png'), related_product, confirm: 'Are you sure?', method: :delete %>
