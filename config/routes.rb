@@ -17,28 +17,26 @@ FoobarStore::Application.routes.draw do
 
   resources :carts
 
- # get "store/index"
+  get "store/index"
+  
   resources :users
   
   resources :sessions
   
   resources :products
   
+  root :to => "store#index", :as => 'store'
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "login" => "sessions#new", :as => "log_in"
   match "/register" => "Account#new", :as => "register"
   match "/carts/:id" => "Cart#show"
   match "/category/:id" => "Category#show"
-  # match "/product/:id" => "Review#show"
   match "/admin" => "Admin#index"
-  # match "/admin/products" => "Product#index"
-  # match "/admin/products" => "Category#index"
   post "/login" => "Sessions#create"
   match "/accounts/new" => "Account#new"
   match "/images" => "Image#index"
   match "/highlights" => "Highlight#index"
   match "/csrftag" => "Application#csrf"
-  #match "/addToCart" => "line_item#create"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
