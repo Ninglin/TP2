@@ -29,6 +29,7 @@ $(document).ready(function(){
 	
 	$('#loginContainer form').submit(function(){
 		$.post('/login.json', function(data){
+			alert('ssss');
 			if(data.success)
 				window.location.reload("");
 			else
