@@ -2,20 +2,21 @@
 <h1>Listing carts</h1>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr class="list_line_even">
+    <th>Cart</th>
+    <th>User</th>
+    <th>Management</th>
   </tr>
 
 <% @carts.each do |cart| %>
-	<tr>
+	<tr class="<%=cycle('list_line_odd','list_line_even')%>">
 	  	<td><%= cart.id%></td>
-	  	<td><%= cart.user_id%></td>
+	  	<td><%= Account.find(cart.user_id).username%></td>
 	    <td>
-	    	<%= link_to 'Show', cart %>
-	   		<%= link_to 'Edit', edit_cart_path(cart) %>
-	   		<%= link_to 'Destroy', cart, confirm: 'Are you sure?', method: :delete %></td>
+	    	<%= link_to image_tag('/Images/icons/zoom.png'), cart %>
+	   		<%= link_to image_tag('/Images/icons/pencil.png'), edit_cart_path(cart) %>
+	   		<%= link_to image_tag('/Images/icons/delete.png'), cart, confirm: 'Are you sure?', method: :delete %>
+	   	</td>
   	</tr>
 <% end %>
 
