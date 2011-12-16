@@ -8,11 +8,17 @@
 		<li>
 			<a href="/products">Manage Products</a>
 		</li>
+		<li>
+			<a href="/related_products">Manage Related</a>
+		</li>
 		<li class="popupmenuprod">
 			<a href="/categories">Manage Categories</a>
 			<ul id="submenuprod">
 				<li class="init"><%= link_to 'Add Product to Category', '/products/new?category_id='+params[:id] %></li>
 			</ul>
+		</li>
+		<li>
+			<a href="/accounts">Manage Accounts</a>
 		</li>
 	</ul>
 </div>
@@ -28,8 +34,12 @@
 	</tr>
 <% @products.each do |product| %>
 	<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+		<% if !Image.find_by_product_id(product.id).nil?%>
 		<% image = Image.find_by_product_id(product.id).url%>
 		<td><%= image_tag image, :class => "list_preview"%></td>
+		<% else %>
+			<td> Unexisting Preview</td>
+		<% end %>
   		<td class='list_description'>
 	    	<dl>
 	    		<dt><%= product.title %></dt>

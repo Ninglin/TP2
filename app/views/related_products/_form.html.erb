@@ -1,4 +1,4 @@
-<%= form_for(@related_product) do |f| %>
+<%= form_for @related_product do |f| %>
   <% if @related_product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@related_product.errors.count, "error") %> prohibited this related_product from being saved:</h2>
@@ -10,20 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  
-  <div class="image">
-  	<%= f.label :image %>
-  	<%= f.file_field :image%>
-  </div>
 
   <div class="field">
     <%= f.label :product_id, :hidden => true %><br />
-    <%= f.number_field :product_id, :value => params[:id], :readOnly => true, :hidden => true%>
+    <%= f.number_field :product_id, :value => params[:product_id], :readOnly => true, :hidden => true%>
   </div>
   <div class="actions">
     <%= f.submit %>

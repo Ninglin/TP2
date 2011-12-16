@@ -9,7 +9,13 @@
 			<a href="/products">Manage Products</a>
 		</li>
 		<li>
+			<a href="/related_products">Manage Related</a>
+		</li>
+		<li>
 			<a href="/categories">Manage Categories</a>
+		</li>
+		<li>
+			<a href="/accounts">Manage Accounts</a>
 		</li>
 	</ul>
 </div>
@@ -45,7 +51,7 @@
 <p>
 	<strong>Related Products:</strong>
 	<% if !@related.empty? %>
-			
+			<%= select(:product, :related_products, @related.collect {|r|[r.name,r.id]},{:prompt => "Related Products"})%>
 	<% else %>
 		<h4>This product has no related products</h4>
 	<% end %>

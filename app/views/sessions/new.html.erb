@@ -1,6 +1,11 @@
 <% if @current_user%>
     <p class="log_msg">Logged in as <%= current_user.username %>.
     <%= link_to "Log out", log_out_path, :class => 'log_out' %></p>
+    <% if @current_user.is_admin?%>
+    	<%= link_to "Go to Management Area", '/admin', :class => 'log_out'%>
+    <% else %>
+    	<%= link_to "My Account", '/accounts/'+@current_user.id+'/show', :class => 'log_out'%>
+    <% end %>
 <% else %>
 
 	<% flash.each do |name, msg| %>

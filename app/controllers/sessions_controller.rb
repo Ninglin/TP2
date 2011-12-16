@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.html {
         if user
-          if Account.is_admin?
+          if user.is_admin?
             redirect_to admin_url
           else
             redirect_to request.referer

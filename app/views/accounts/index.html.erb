@@ -1,16 +1,37 @@
-<h1>Listing accounts</h1>
+<%if !@current_user.nil?%>
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+		</li>
+		<li>
+			<a href="/related">Manage Related</a>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+		<li class="popupmenuprod">
+			<a href="/accounts">Manage Accounts</a>
+			<ul id="submenuprod">
+				<li class="init"><%= link_to 'New Account', new_account_path %></li>
+			</ul>
+			</li>
+		</li>
+	</ul>
+</div>
+<% end %>
+<%if @current_user.is_admin?%>
+<h1>Listing Accounts</h1>
 
 <table>
   <tr>
     <th>Username</th>
-    <th>Password</th>
     <th>Firstname</th>
     <th>Lastname</th>
     <th>Address</th>
-    <th>Cart</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Management</th>
   </tr>
 
 <% @accounts.each do |account| %>
@@ -19,13 +40,22 @@
     <td><%= account.firstname %></td>
     <td><%= account.lastname %></td>
     <td><%= account.address %></td>
-    <td><%= link_to 'Show', account %></td>
-    <td><%= link_to 'Edit', edit_account_path(account) %></td>
-    <td><%= link_to 'Destroy', account, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+    	
+	    	
+		    <%= link_to image_tag('/Images/icons/zoom.png'), account %>
+		    <%= link_to image_tag('/Images/icons/pencil.png'), edit_account_path(account) %>
+		    <%= link_to image_tag('/Images/icons/delete.png'), account, confirm: "Are you sure you want to delete #{account.username}?", method: :delete %>
+		    
+    </td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Account', new_account_path %>
+<% else %>
+	<h1>ERROR</h1>
+	<p>You do not have permission to access this page! To return to the index page, click <%= link_to 'here', '/index'%></p>
+<% end %>
+<% else %>
+	<h1>Denied!</h1>
+	<p>The page you are trying to access is only available to registered users! To return to the index page, click <%= link_to 'here', '/index'%></p>
+<% end %>	

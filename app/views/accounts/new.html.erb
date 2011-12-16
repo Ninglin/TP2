@@ -1,6 +1,26 @@
+<% content_for :admin do%>
+<div id="lastViewContainer">
+	<ul id="navlist">
+		<li class="menu"><p> Admin </p></li>
+		<li>
+			<a href="/products">Manage Products</a>
+			
+		</li>
+		<li>
+			<a href="/related_products">Manage Related Products</a>
+		</li>
+		<li>
+			<a href="/categories">Manage Categories</a>
+		</li>
+		<li>
+			<a href="/accounts">Manage Accounts</a>
+		</li>
+	</ul>
+</div>
+<%end%>
 <h1>Register</h1>
 
-<%= form_for @account do |f| %>
+<%= form_for @account, :url => {:action => 'create'} do |f| %>
   <% if @account.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
@@ -16,6 +36,14 @@
     <%= f.text_field :username %>
   </p>
   <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
   </p>
@@ -28,12 +56,12 @@
     <%= f.text_field :address %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+  	<% if !@current_user.nil?%>
+	  	<% if @current_user.is_admin?%>
+		  	<%= f.label :isAdmin %>
+		  	<%= f.select :isAdmin, {true => 1, false => 0}, {:include_blank => true} %>
+	  	<% end %>
+  	<% end %>
   </p>
   <p class="button"><%= f.submit %></p>
 <% end %>

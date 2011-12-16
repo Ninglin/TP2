@@ -40,12 +40,13 @@ class AccountsController < ApplicationController
     @account = Account.new(params[:account])
 
     respond_to do |format|
+      @account.isAdmin = false
       if @account.save
-        format.html { redirect_to '/index.html', notice: 'User Registered!' }
-        format.json { render json: @account, status: :created, location: @category }
+        format.html { redirect_to  @account, notice: 'User Registered!' }
+        format.json { render json: @account, status: :created, location: @account }
       else
         format.html { render action: "new" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.json { render json: @account.errors, status: :unprocessable_entity }
       end
     end
   end
