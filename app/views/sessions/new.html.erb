@@ -4,7 +4,7 @@
     <% if @current_user.is_admin?%>
     	<%= link_to "Go to Management Area", '/admin', :class => 'log_out'%>
     <% else %>
-    	<%= link_to "My Account", '/accounts/'+@current_user.id+'/show', :class => 'log_out'%>
+    	<%= link_to "My Account", '/accounts/'+@current_user.id.to_s, :class => 'log_out'%>
     <% end %>
 <% else %>
 
